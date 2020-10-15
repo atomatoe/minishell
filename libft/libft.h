@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:59:52 by skarry            #+#    #+#             */
-/*   Updated: 2020/05/22 20:21:06 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/15 21:37:55 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 t_list				*ft_lstnew(void *content);
 char				*ft_strtosup(char const *s, size_t len);
 int					get_next_line(int fd, char **line);
+size_t				ft_array_size(char **ar);
 
 #endif
