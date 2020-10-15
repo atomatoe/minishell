@@ -3,30 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 13:01:53 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:08 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/07 11:06:23 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/13 11:50:30 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t g)
+void	*ft_memcpy(void *des, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	if (dest == src)
-		return (dest);
-	i = 0;
-	str1 = (unsigned char *)src;
-	str2 = (unsigned char *)dest;
-	while (i < g)
+	d = (unsigned char *)des;
+	s = (unsigned char *)src;
+	if (n == 0 || des == src)
+		return (des);
+	while (n--)
 	{
-		str2[i] = str1[i];
-		i++;
+		*d++ = *s++;
 	}
-	return (str2);
+	return (des);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/13 14:41:48 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/15 21:11:30 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef	struct	s_data
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-# include "./libft/libft.h"
-# include "./get_next_line/get_next_line.h"
+# include "libft/libft.h"
 
 #endif

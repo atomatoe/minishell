@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 16:12:41 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:26 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/09 19:01:46 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/13 12:57:39 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char			*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char		*s3;
-	size_t		size1;
-	size_t		size2;
+	int		len;
+	char	*res;
 
-	if (!s2 || !s1)
+	if (!s1 || !s2)
+		return (0);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (!(res = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	size1 = ft_strlen(s1);
-	size2 = ft_strlen(s2);
-	if (!(s3 = (char*)malloc(sizeof(char) * (size1 + size2 + 1))))
-		return (NULL);
-	ft_strlcpy(s3, s1, (size1 + 1));
-	ft_strlcat(s3, s2, (size1 + size2 + 1));
-	return (s3);
+	while (*s1 != '\0')
+		*res++ = *s1++;
+	while (*s2 != '\0')
+		*res++ = *s2++;
+	*res = '\0';
+	return (res - len);
 }

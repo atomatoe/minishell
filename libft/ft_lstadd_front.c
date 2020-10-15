@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/08 18:19:23 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:18 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/14 14:00:38 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/14 17:58:40 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_putstr(char *s, size_t len)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t i;
-
-	i = 0;
-	while (s[i] != '\0' && i < len)
+	if (lst && new)
 	{
-		write(1, &s[i], 1);
-		i++;
+		new->next = *lst;
+		*lst = new;
 	}
-	return (i);
 }

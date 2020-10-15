@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 15:47:05 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:24 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/03 10:58:47 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/13 11:53:28 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int		i;
-	char	*str;
+	char	*fin;
 
-	i = 0;
-	str = (char *)s;
-	while (str[i] != '\0')
+	fin = (char *)s;
+	while (*fin != c)
 	{
-		if (str[i] == c)
-			return (&(str[i]));
-		i++;
+		if (!*fin)
+			return (NULL);
+		fin++;
 	}
-	if (c == str[i])
-		return (&(str[i]));
-	return (NULL);
+	return (fin);
 }

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/08 18:19:23 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:10 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/14 15:08:23 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/14 17:58:44 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar(int c)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	write(1, &c, 1);
+	t_list	*pip;
+
+	if (*lst)
+	{
+		while (*lst)
+		{
+			pip = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			(*lst) = pip;
+		}
+	}
 }

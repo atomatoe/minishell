@@ -3,20 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 12:54:09 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:55:57 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/04/30 13:08:34 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/17 18:50:32 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isalpha(int a)
+int		ft_isalpha(int c)
 {
-	if (a >= 65 && a <= 90)
-		return (1);
-	if (a >= 97 && a <= 122)
-		return (1);
-	return (0);
+	return ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'));
 }

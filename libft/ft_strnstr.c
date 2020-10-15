@@ -3,32 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/21 16:38:00 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:30 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/04 22:04:11 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/13 13:31:20 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *str1, const char *str2, size_t k)
+char	*ft_strnstr(const char *str1, const char *str2, size_t n)
 {
-	size_t	i;
-	size_t	a;
+	size_t	len;
 
-	i = 0;
 	if (*str2 == '\0')
 		return ((char *)str1);
-	while (str1[i] != '\0' && i < k)
+	len = ft_strlen(str2);
+	while (*str1 && n-- >= len)
 	{
-		a = 0;
-		while (str2[a] != '\0' && str1[i + a] == str2[a] && str1[i + a] != '\0'
-			&& i + a < k)
-			a++;
-		if (str2[a] == '\0')
-			return ((char *)(str1 + i));
-		i++;
+		if (*str1 == *str2 && ft_memcmp(str1, str2, len) == 0)
+			return ((char *)str1);
+		str1++;
 	}
-	return (NULL);
+	return (0);
 }

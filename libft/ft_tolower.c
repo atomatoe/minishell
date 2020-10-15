@@ -3,22 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 15:56:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:33 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/04/30 13:55:17 by skarry            #+#    #+#             */
+/*   Updated: 2020/04/30 19:39:08 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_tolower(char *str)
+int		ft_tolower(int c)
 {
-	int	i;
-
-	i = -1;
-	while (str[++i])
-		if (str[i] >= 65 && str[i] <= 90)
-			str[i] += 32;
-	return (str);
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	else
+		return (c);
 }

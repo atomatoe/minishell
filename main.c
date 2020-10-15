@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/15 18:08:57 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/15 21:15:14 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		main(void)
 
 	while (get_next_line(0, &line) > 0)
 	{
-		ft_give_memory(line, &all);
+		// ft_give_memory(line, &all);
 		ft_parse(line, &all);
 		//ft_valid_arg(line, &all);
 		printf("count = %d\n", all.count);

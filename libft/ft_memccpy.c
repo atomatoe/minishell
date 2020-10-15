@@ -3,32 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 12:59:50 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:05 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/07 17:45:52 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/17 19:02:48 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
+void	*ft_memccpy(void *des, const void *src, int c, size_t n)
 {
-	size_t	i;
-	char	*str;
-	char	*final;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
-	if (dest == src)
-		return (dest);
+	d = (unsigned char *)des;
+	s = (unsigned char *)src;
 	i = 0;
-	str = (char *)src;
-	final = (char *)dest;
-	while (i < n)
+	while (n > i)
 	{
-		final[i] = str[i];
+		d[i] = s[i];
+		if (s[i] == (unsigned char)c)
+			return ((void *)des + i + 1);
 		i++;
-		if (str[i - 1] == (char)c)
-			return (&(final[i]));
 	}
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 15:54:11 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:30 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/04 21:13:34 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/17 18:52:03 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char *str;
+	char	*fin;
 
-	str = 0;
-	while (*s)
+	fin = (char *)s + ft_strlen(s);
+	while (*fin != c)
 	{
-		if (*s == c)
-			str = (char *)s;
-		s++;
+		if (ft_strncmp(fin, s, ft_strlen(s)) == 0)
+			return (NULL);
+		fin--;
 	}
-	if (str)
-		return (str);
-	if (c == '\0')
-		return ((char *)s);
-	return (0);
+	return (fin);
 }

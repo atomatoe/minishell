@@ -3,27 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 13:04:02 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:16 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/12 19:31:36 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/13 12:55:28 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (s)
-	{
-		while (s[i] != '\0')
-		{
-			write(fd, &s[i], 1);
-			i++;
-		}
-		write(fd, "\n", 1);
-	}
+	ft_putstr_fd((char *)s, fd);
+	ft_putchar_fd('\n', fd);
 }

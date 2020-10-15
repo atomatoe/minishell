@@ -3,40 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 15:55:32 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:32 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/09 17:13:07 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/21 21:19:04 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*res;
 	size_t	i;
-	size_t	j;
-	size_t	f;
-	char	*str;
 
 	if (!s)
 		return (NULL);
-	j = 0;
-	i = 0;
-	f = ft_strlen(&(s[start]));
-	if (len > f)
-		len = f;
-	if (!(str = (char *)malloc(sizeof(char) * (1 + len))))
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	if (ft_strlen(s + start) < len)
+		len = ft_strlen(s + start);
+	if (!(res = (char *)malloc(sizeof(char) * (len + 1))))
 		return (NULL);
-	while (s[i])
+	i = 0;
+	while (i < len)
 	{
-		if (i >= start && j < len)
-		{
-			str[j] = s[i];
-			j++;
-		}
+		res[i] = s[start + i];
 		i++;
 	}
-	str[j] = '\0';
-	return (str);
+	res[i] = '\0';
+	return (res);
 }

@@ -3,37 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 13:02:40 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:09 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/08 17:13:09 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/17 18:31:39 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char *s;
-	unsigned char *s2;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	s = (unsigned char *)src;
-	s2 = (unsigned char *)dest;
-	if (s == s2)
-		return (s2);
-	if (s < s2)
+	if (src == dst)
+		return (dst);
+	if (src < dst)
 	{
-		s = (unsigned char *)src + n - 1;
-		s2 = dest + n - 1;
-		while (n--)
-		{
-			*s2-- = *s--;
-		}
+		d = (unsigned char *)dst + len - 1;
+		s = (unsigned char *)src + len - 1;
+		while (len--)
+			*d-- = *s--;
 	}
 	else
-		while (n--)
-		{
-			*s2++ = *s++;
-		}
-	return (dest);
+	{
+		d = (unsigned char *)dst;
+		s = (unsigned char *)src;
+		while (len--)
+			*d++ = *s++;
+	}
+	return (dst);
 }

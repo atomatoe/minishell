@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 15:47:34 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:25 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/04/30 13:55:52 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/21 21:32:19 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 char		*ft_strdup(const char *str)
 {
-	int		i;
 	char	*str2;
+	int		i;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	if (!(str2 = (char *)malloc(sizeof(char) * (i + 1))))
+	if (!(str2 = (char*)malloc(sizeof(char) * ft_strlen(str) + 1)))
 		return (NULL);
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		str2[i] = str[i];
 		i++;

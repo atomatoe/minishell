@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 19:03:40 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:24 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/09 21:37:52 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/22 20:21:14 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	*mem_clear(char **str)
+static void		*free_str(char **str)
 {
 	int i;
 
@@ -26,66 +26,65 @@ static void	*mem_clear(char **str)
 	return (NULL);
 }
 
-static int	num_letter(char const *s2, char c, int i)
+static int		count_sym(char const *s, char c)
 {
-	int		len;
+	int i;
 
-	len = 0;
-	while (s2[i] != c && s2[i] != '\0')
-	{
-		len++;
+	i = 0;
+	while (*s != c && *(s++))
 		i++;
-	}
-	return (len);
+	return (i);
 }
 
-static int	num_word(char const *s, char c)
+static int		count_words(char const *s, char c)
 {
-	int		i;
-	int		g;
+	int		cut;
 
-	i = 0;
-	g = 0;
-	if (s[0] != c)
-		g++;
-	while (s[i] != '\0')
+	cut = 0;
+	if (*s && *s != c)
 	{
-		while (s[i] == c)
+		s++;
+		cut++;
+	}
+	while (*s)
+	{
+		while (*s == c)
 		{
-			i++;
-			if (s[i] != c && s[i] != '\0')
-				g++;
+			s++;
+			if (*s != c && *s)
+				cut++;
 		}
-		while (s[i] != c && s[i] != '\0')
-			i++;
+		if (!(*s))
+			return (cut);
+		s++;
 	}
-	return (g);
+	return (cut);
 }
 
-char		**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
-	int		i;
-	int		f;
 	char	**str;
+	int		i;
+	int		j;
 
+	if (!s || !(str = (char**)malloc(sizeof(char*) * (count_words(s, c) + 1))))
+		return (NULL);
 	i = 0;
-	f = 0;
-	if (!s)
-		return (NULL);
-	if (!(str = (char **)malloc(sizeof(char *) * num_word(s, c) + 1)))
-		return (NULL);
-	while (s[i] != '\0')
+	j = 0;
+	while (*s)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] == '\0')
-			break ;
-		if (!(str[f] = (char *)malloc(sizeof(char) * num_letter(s, c, i) + 1)))
-			return (mem_clear(str));
-		ft_strlcpy(str[f], &s[i], num_letter(s, c, i) + 1);
-		i = i + num_letter(s, c, i);
-		f++;
+		while (*s == c && *s)
+			s++;
+		if (*s)
+		{
+			if (!(str[j] = (char*)malloc(sizeof(char) * (count_sym(s, c) + 1))))
+				return (free_str(str));
+			while (*s != c && *s)
+				str[j][i++] = *s++;
+			str[j++][i] = '\0';
+			i = 0;
+		}
 	}
-	str[f] = NULL;
+	str[j] = NULL;
 	return (str);
 }

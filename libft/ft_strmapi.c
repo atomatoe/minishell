@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/20 15:51:41 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/08/08 18:56:28 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/05/13 11:19:23 by skarry            #+#    #+#             */
+/*   Updated: 2020/05/13 14:42:58 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,19 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str;
-	int		i;
-	int		k;
+	char	*pi;
+	size_t	i;
 
-	if (!f || !s)
+	if (!s || !f)
+		return (NULL);
+	if (!(pi = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1))))
 		return (NULL);
 	i = 0;
-	k = (int)ft_strlen(s);
-	if (!(str = (char *)malloc(sizeof(char) * (1 * k + 1))))
-		return (NULL);
-	k = 0;
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		str[k] = f(i, s[i]);
+		pi[i] = f(i, s[i]);
 		i++;
-		k++;
 	}
-	str[k] = '\0';
-	return (str);
+	pi[i] = '\0';
+	return (pi);
 }
