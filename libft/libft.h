@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:59:52 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/15 21:37:55 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/16 13:15:55 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <math.h>
+# include <stdio.h>
 
 # define BUFFER_SIZE 32
 

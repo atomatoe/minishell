@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/16 12:59:21 by skarry           ###   ########.fr       */
+/*   Created: 2020/10/16 12:53:14 by skarry            #+#    #+#             */
+/*   Updated: 2020/10/16 13:14:16 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef PARSER_H
+# define PARSER_H
 
-typedef	struct	s_data
-{
-	char **arg;
-	int count;
-}				t_data;
+# include "../libft/libft.h"
 
-# include "libft/libft.h"
-# include "parser/parser.h"
+void				wait_str();
+size_t				ft_array_size(char **ar);
 
 #endif
