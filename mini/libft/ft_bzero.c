@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini.h                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/16 17:19:19 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/16 17:19:29 by skarry           ###   ########.fr       */
+/*   Created: 2020/05/20 12:52:32 by atomatoe          #+#    #+#             */
+/*   Updated: 2020/08/08 18:55:54 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#include "libft.h"
 
-# include "../libft/libft.h"
-# include "../minishell.h"
+void	ft_bzero(void *src, size_t l)
+{
+	size_t	i;
+	char	*str;
 
-
-#endif
+	i = 0;
+	str = src;
+	while (i < l)
+	{
+		str[i] = '\0';
+		i++;
+	}
+}
