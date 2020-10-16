@@ -28,9 +28,6 @@ re:		fclean all
 bonus: all
 
 norm: 
-	norminette ./cub/*.c ./libft/*.c main.c
+	norminette parser/*.c libft/*.c main.c
 
-cubnorm:
-	norminette ./cub/*.c
-
-.PHONY: all clean fclean re bonus norm cubnorm
+.PHONY: all clean fclean re bonus norm
