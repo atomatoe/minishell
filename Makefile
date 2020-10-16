@@ -1,8 +1,8 @@
 NAME = minishell
-HEADERS = ./cub/minishell.h
+HEADERS = ./parser/parser.h
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = main.c parser/wait_str.c parser/cut_line.c
+SRC = main.c parser/wait_str.c parser/cut_line.c parser/get_data.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
@@ -10,10 +10,10 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(MAKE) -C libft all
-	gcc $(OBJ) $(CFLAGS) ./libft/libft.a -o $(NAME)
+	gcc $(OBJ) ./libft/libft.a -o $(NAME)
 
 %.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
