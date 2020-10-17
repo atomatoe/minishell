@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/17 11:16:03 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/17 15:52:53 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		write_lst(t_commands **s_point, size_t *point, size_t *end_cmd, char *line
 	*end_cmd = *point + find_end_cmd(line + *point);
 	(*s_point)->invalid = check_quotes(line, *point, *end_cmd);
 	line2 = ft_strtosup(line + *point, (*end_cmd - *point));
-	(*s_point)->arg = split_for_mini(line2, ' ');
+	(*s_point)->arg = line_to_mas(line2);
 	(*s_point)->cmd = (*s_point)->arg[0];
 	free(line2);
 	*point += skip_space(line + *point);
