@@ -2,7 +2,8 @@ NAME = minishell
 HEADERS = ./parser/parser.h
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = main.c parser/wait_str.c parser/cut_line.c parser/get_data.c
+SRC = main.c parser/wait_str.c parser/cut_line.c parser/get_data.c\
+	parser/split_for_mini.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
