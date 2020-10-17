@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:47:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/17 17:28:57 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/17 18:23:18 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ char	*re_malloc(char c, char *w)
 		v[1] = '\0';
 		return (v);
 	}
-	v = (char *)malloc(ft_strlen(w) + 1);
+	v = (char *)malloc(ft_strlen(w) + 2);
 	i = -1;
 	while (w[++i])
 		v[i] = w[i];
 	v[i++] = c;
-	v[i] = w[i];
+	v[i] = '\0';
 	free (w);
 	return (v);
 }
@@ -47,6 +47,11 @@ char	*get_word(char **line)
 	{
 		if ((*line)[i] == '\\')
 		{
+			if (!((*line)[i + 1]))
+			{
+				i++;
+				break ;
+			}
 			w = re_malloc((*line)[i + 1], w);
 			i += 2;
 		}
@@ -59,7 +64,8 @@ char	*get_word(char **line)
 		}
 		if ((*line)[i] == '\"')
 		{
-			while ((*line)[i++] && (*line)[i] != '\"')
+			i++;
+			while ((*line)[i] && (*line)[i] != '\"')
 			{
 				if ((*line)[i] == '\\')
 				{
@@ -67,7 +73,7 @@ char	*get_word(char **line)
 					i += 2;
 				}
 				else
-					w = re_malloc((*line)[i], w);
+					w = re_malloc((*line)[i++], w);
 			}
 			if ((*line)[i])
 				i++;
