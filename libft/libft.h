@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:59:52 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/16 13:15:55 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/18 11:27:39 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ t_list				*ft_lstnew(void *content);
 char				*ft_strtosup(char const *s, size_t len);
 int					get_next_line(int fd, char **line);
 size_t				ft_array_size(char **ar);
+void				*free_str(char ***str);
 
 #endif

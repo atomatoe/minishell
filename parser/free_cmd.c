@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   free_cmd->c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/13 20:07:46 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/18 15:19:02 by skarry           ###   ########.fr       */
+/*   Created: 2020/10/17 19:57:55 by skarry            #+#    #+#             */
+/*   Updated: 2020/10/17 20:09:54 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parser.h"
 
-t_list		*ft_lstnew(void *content)
+void	free_cmd(t_commands *cmd)
 {
-	t_list	*new;
-
-	if (!(new = (t_list *)malloc(sizeof(t_list))))
-		return (NULL);
-	if (!content)
-		new->content = NULL;
-	else
-		new->content = content;
-	new->next = NULL;
-	return (new);
+	if(cmd)
+	{
+		if (cmd->redir)
+			free_cmd(cmd->redir);
+		if (cmd->pipe)
+			free_cmd(cmd->pipe);
+		if (cmd->next)
+			free_cmd(cmd->next);
+		// cmd->cmd;
+		if (cmd->arg)
+			free_str(&cmd->arg);
+		free (cmd);
+	}
 }

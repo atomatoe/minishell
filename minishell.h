@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/16 18:22:44 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/17 18:34:31 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,7 @@
 # include "parser/parser.h"
 // # include "mini/mini.h"
 
-typedef	struct	s_data
-{
-	char **arg;
-	int count;
-}				t_data;
+
 
 
 #endif
