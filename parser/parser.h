@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 12:53:14 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/20 12:16:29 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/20 18:00:42 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ typedef	struct			s_data
 }						t_data;
 
 void				wait_str(char **line);
-size_t				ft_array_size(char **ar);
-t_commands			*cut_line(char *line, t_data all);
-char				*get_cmd(size_t *point, size_t end_cmd, char *line);
-void				check_end(char *line, t_commands *s_point);
+t_commands			*create_lst(char *line, t_data all);
+void				add_lst(char *line, t_commands *s_point, size_t point, size_t end_cmd);
 char				**line_to_mas(char *line);
+size_t				skip_space(char *s);
 void				free_cmd(t_commands *cmd);
+char				*get_word(char **line);
+void				write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line);
+void				print_lst(t_commands *cmd);
 
 #endif

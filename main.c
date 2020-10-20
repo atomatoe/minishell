@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/20 12:18:52 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/20 18:00:35 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int		main(int argc, char **argv, char **env)
 	while (1)
 	{
 		wait_str(&line);
-		cmd = cut_line(line, all);
+		cmd = create_lst(line, all);
 		//command execution
 		free (line);
+		print_lst(cmd);
 		free_cmd(cmd);
 		line = NULL;
 	}
