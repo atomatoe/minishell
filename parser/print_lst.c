@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:58:19 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/20 15:11:47 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/20 19:05:21 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	print_lst(t_commands *cmd)
 
 	if(cmd)
 	{
-		while (cmd->arg[i])
+		if (cmd->arg)
+		{
+			while (cmd->arg[i])
 		{
 			printf("---arg[%s]\n", cmd->arg[i]);
 			i++;
@@ -39,6 +41,7 @@ void	print_lst(t_commands *cmd)
 		{
 			printf("---go to next from [%s]\n", cmd->cmd);
 			print_lst(cmd->next);
+		}
 		}
 	}
 }

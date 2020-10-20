@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   split_line_to_words.c                              :+:      :+:    :+:   */
+/*   split_words2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:47:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/20 17:53:10 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/20 18:27:10 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ char	*re_malloc(char c, char *w)
 	return (v);
 }
 
-int		if_backslash(char **line, int *i, char **w)
+int		if_backslash(char **line, int *i, char **w, int *er)
 {
 	if (!((*line)[*i + 1]))
 	{
 		i++;
+		*er = 1;
 		return (1);
 	}
 	*w = re_malloc((*line)[*i + 1], *w);
@@ -46,7 +47,7 @@ int		if_backslash(char **line, int *i, char **w)
 	return (0);
 }
 
-int		if_double_quotes(char **line, int i, char **w)
+int		if_double_quotes(char **line, int i, char **w, int *er)
 {
 	i++;
 	while ((*line)[i] && (*line)[i] != '\"')
@@ -61,18 +62,22 @@ int		if_double_quotes(char **line, int i, char **w)
 	}
 	if ((*line)[i])
 		i++;
+	else
+		*er = 1;
 	return (i);
 }
-int		if_single_quotes(char **line, int i, char **w)
+int		if_single_quotes(char **line, int i, char **w, int *er)
 {
 	while ((*line)[i++] && (*line)[i] != '\'')
 		*w = re_malloc((*line)[i], *w);
 	if ((*line)[i])
 		i++;
+	else
+		*er = 1;
 	return (i);
 }
 
-char	*get_word(char **line)
+char	*get_word(char **line, int *er)
 {
 	char	*w;
 	int		i;
@@ -83,12 +88,12 @@ char	*get_word(char **line)
 	while (((*line)[i] != ' ' && (*line)[i]) || (!w && (*line)[i]))
 	{
 		if ((*line)[i] == '\\')
-			if (if_backslash(line, &i, &w))
+			if (if_backslash(line, &i, &w, er))
 				break ;
 		if ((*line)[i] == '\'')
-			i = if_double_quotes(line, i, &w);
+			i = if_double_quotes(line, i, &w, er);
 		if ((*line)[i] == '\"')
-			i = if_double_quotes(line, i, &w);
+			i = if_double_quotes(line, i, &w, er);
 		while ((*line)[i] && (*line)[i] != ' ' && (*line)[i] != '\\'
 				&& (*line)[i] != '\'' && (*line)[i] != '\"')
 		{

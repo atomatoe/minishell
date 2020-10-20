@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/20 18:00:54 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/20 18:21:27 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void		write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line
 
 	s_point->invalid = 0;
 	line2 = ft_strtosup(line + *point, (*end_cmd - *point));
-	s_point->arg = line_to_mas(line2);
+	s_point->arg = line_to_mas(line2, &s_point->invalid);
 	free(line2);
 	s_point->cmd = s_point->arg[0];
 	*point += skip_space(line + *point);
