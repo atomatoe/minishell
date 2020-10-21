@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/21 16:47:13 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/21 17:43:53 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void		write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line
 		(*point)++;
 }
 
-t_commands		*create_lst(char *line, t_data all)
+t_commands		*create_lst(char *line, t_data *all)
 {
 	size_t		point;
 	size_t		end_cmd;
@@ -84,7 +84,7 @@ t_commands		*create_lst(char *line, t_data all)
 	{
 		write_data(cmd, &point, &end_cmd, line);
 		add_lst(line, cmd, point, end_cmd);
-		record_redir(cmd);
+		record_redir(cmd, all);
 	}
 	return (cmd);
 }

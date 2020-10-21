@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   record_redir.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 19:16:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/21 16:47:35 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/21 17:55:24 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		record_arg(t_commands *pipe, t_commands *redir)
 	slip_2_mas(&pipe->arg, &redir->arg);
 }
 
-void		record_redir(t_commands *cmd)
+void		record_redir(t_commands *cmd, t_data *all)
 {
 	t_commands	*pipe;
 	t_commands	*next;
@@ -78,6 +78,8 @@ void		record_redir(t_commands *cmd)
 	next = cmd;
 	while (next)
 	{
+		give_directory(next, all);
+
 		pipe = next;
 		while (pipe)
 		{
