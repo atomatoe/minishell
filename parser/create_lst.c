@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/20 18:21:27 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 13:01:58 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line
 	char		*line2;
 
 	line2 = NULL;
+	s_point->cmd = NULL;
 	s_point->arg = NULL;
 	s_point->next = NULL;
 	s_point->pipe = NULL;
@@ -49,7 +50,9 @@ void		write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line
 	line2 = ft_strtosup(line + *point, (*end_cmd - *point));
 	s_point->arg = line_to_mas(line2, &s_point->invalid);
 	free(line2);
-	s_point->cmd = s_point->arg[0];
+	s_point->cmd = ft_strdup(s_point->arg[0]);
+	if (!s_point->arg[0])
+		s_point->invalid = 1;
 	*point += skip_space(line + *point);
 	s_point->type_redir = 0;
 	if (line[*end_cmd] == '<')
@@ -70,6 +73,7 @@ t_commands		*create_lst(char *line, t_data all)
 	t_commands	*cmd;
 
 	cmd = (t_commands *)malloc(sizeof(t_commands));
+	cmd->cmd = NULL;
 	cmd->arg = NULL;
 	cmd->next = NULL;
 	cmd->pipe = NULL;
@@ -80,6 +84,7 @@ t_commands		*create_lst(char *line, t_data all)
 	{
 		write_data(cmd, &point, &end_cmd, line);
 		add_lst(line, cmd, point, end_cmd);
+		record_redir(cmd);
 	}
 	return (cmd);
 }

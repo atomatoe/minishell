@@ -22,9 +22,10 @@ void	free_cmd(t_commands *cmd)
 			free_cmd(cmd->pipe);
 		if (cmd->next)
 			free_cmd(cmd->next);
-		// cmd->cmd;
 		if (cmd->arg)
 			free_str(&cmd->arg);
+		if (cmd->cmd)
+			free(cmd->cmd);
 		free (cmd);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 12:53:14 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/20 19:11:46 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/20 19:20:23 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void				free_cmd(t_commands *cmd);
 char				*get_word(char **line, int *er);
 void				write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line);
 void				print_lst(t_commands *cmd);
+void				record_redir(t_commands *cmd);
 
 #endif
