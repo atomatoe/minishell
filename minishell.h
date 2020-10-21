@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/21 16:49:12 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/21 17:54:14 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef	struct	s_data
 
 
 void				wait_str(char **line);
-t_commands			*create_lst(char *line, t_data all);
+t_commands			*create_lst(char *line, t_data *all);
 void				add_lst(char *line, t_commands *s_point, size_t point, size_t end_cmd);
 char				**line_to_mas(char *line, int *er);
 size_t				skip_space(char *s);
@@ -62,8 +62,9 @@ void				free_cmd(t_commands *cmd);
 char				*get_word(char **line, int *er);
 void				write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line);
 void				print_lst(t_commands *cmd);
-void				record_redir(t_commands *cmd);
+void				record_redir(t_commands *cmd, t_data *all);
 int                 ft_creat_env(t_data *all, char **env);
 void                ft_parse_env(t_data *all);
+void	give_directory(t_commands *lst, t_data *all);
 
 #endif

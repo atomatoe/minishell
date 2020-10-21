@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/21 16:42:03 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/21 18:02:01 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,11 @@ int		main(int argc, char **argv, char **env)
 	(void)argv;
 
 	char		*line;
-	t_data		all;
+	t_data		*all;
 	t_commands	*cmd;
 
-	ft_creat_env(&all, env);
+	all = (t_data *)malloc(sizeof(t_data));
+	ft_creat_env(all, env);
 	while (1)
 	{
 		wait_str(&line);
