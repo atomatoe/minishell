@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_give_command.c                                  :+:      :+:    :+:   */
+/*   ft_give_pwd_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/21 19:00:38 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/10/21 17:19:07 by atomatoe          #+#    #+#             */
+/*   Updated: 2020/10/21 19:00:40 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int ft_give_command(t_commands *cmd, t_data *all)
+void ft_give_env(t_commands *cmd, t_data *all)
 {
-    pid_t pid = fork();
-    if(pid < 0)
-   	    perror(NULL);
-    else if(pid == 0)
-	{
-		execve(cmd->arg[0], cmd->arg, all->env);
-		perror(NULL);
-	}
-    else
-        wait(0);
-    return (0);
+    ft_strlen(cmd->cmd);
+    ft_strlen(all->env[0]);
+    int i;
+
+    i = 0;
+    while(all->env[i])
+		printf("%s\n", all->env[i++]);
+}
+
+void ft_give_pwd(t_commands *cmd)
+{
+	ft_strlen(cmd->cmd);
+    char tmp[1000];
+    getcwd(tmp, 1000);
+	printf("%s\n", tmp);
 }

@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/21 16:53:33 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/21 18:49:21 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void ft_parse_env(t_data *all)
             all->env_dir_i = i;
         }
 		if(ft_strncmp(all->env[i], "HOME=", 5) == 0)
-            all->env_home_dir = all->env[i];
+            all->env_home_dir = ft_strdup(all->env[i]);
         if(ft_strncmp(all->env[i], "OLDPWD=", 7) == 0)
             all->env_old_dir_i = i;
 		if(ft_strncmp(all->env[i], "PATH=", 5) == 0)

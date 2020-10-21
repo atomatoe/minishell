@@ -1,4 +1,16 @@
-#include "minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/21 17:29:34 by atomatoe          #+#    #+#             */
+/*   Updated: 2020/10/21 19:00:43 by atomatoe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../minishell.h"
 
 char *ft_strzero(char *str)
 {
@@ -55,38 +67,6 @@ int ft_compare_str(char *s1, char *s2)
 			return (1);
 	}
 	return (-1);
-}
-
-int ft_str_check(char *str, char **arg)
-{
-	int i;
-	int count;
-	char *tmp;
-
-	if(!(tmp = (char *)malloc(sizeof(char) * (ft_strlen(str) + 1))))
-		return (-1);
-	count = 0;
-	while(str[count] != '=')
-	{
-		tmp[count] = str[count];
-		count++;
-	}
-	i = ft_strlen_msv(arg);
-	count = 0;
-	while(i != 0)
-	{
-		if(ft_compare_str(tmp, arg[count]) == 1)
-		{
-			free(tmp);
-			tmp = NULL;
-			return(1);
-		}
-		i--;
-		count++;
-	}
-	free(tmp);
-	tmp = NULL;
-	return (0);
 }
 
 char **free_msv(char **str)

@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   give_directory.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:41:33 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/21 18:06:34 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 18:29:57 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-char *ft_strzero(char *str)
-{
-    int i;
-
-    i = 0;
-    while(str[i] != '\0')
-    {
-        str[i] = '\0';
-        i++;
-    }
-    return(str);
-}
 
 static int ft_give_directory(t_data *all, char *command)
 {

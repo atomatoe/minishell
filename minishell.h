@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/21 17:54:14 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 18:57:40 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef	struct	s_data
     char **arg;
     int count;
     char **env;
-	char *env_home_dir; // для cd без аргументов
+	int env_home_dir; // index home=/users/atomatoe
 	char *env_dir; // текущяя директория (pwd)
 	int	env_dir_i; // в какой строке env лежит текущая директория
 	int	env_old_dir_i; // в какой строке env лежит oldpwd=
@@ -65,6 +65,20 @@ void				print_lst(t_commands *cmd);
 void				record_redir(t_commands *cmd, t_data *all);
 int                 ft_creat_env(t_data *all, char **env);
 void                ft_parse_env(t_data *all);
-void	give_directory(t_commands *lst, t_data *all);
+void				give_directory(t_commands *lst, t_data *all);
+//////// utils:
+char 				*ft_strzero(char *str);
+char				**ft_strdup_msv(char **str);
+int					ft_strlen_msv(char **str);
+int					ft_compare_str(char *s1, char *s2);
+char				**free_msv(char **str);
+////////
+int					ft_start (t_commands *cmd, t_data *all);
+void				ft_give_pwd(t_commands *cmd);
+void				ft_give_env(t_commands *cmd, t_data *all);
+int					ft_give_export(t_commands *cmd, t_data *all);
+int					ft_give_unset(t_commands *cmd, t_data *all);
+int					ft_give_command(t_commands *cmd, t_data *all);
+int ft_give_cd(t_commands *cmd, t_data *all);
 
 #endif
