@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:47:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/20 18:27:10 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 14:38:57 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		if_backslash(char **line, int *i, char **w, int *er)
 {
 	if (!((*line)[*i + 1]))
 	{
-		i++;
+		(*i)++;
 		*er = 1;
 		return (1);
 	}
@@ -54,6 +54,12 @@ int		if_double_quotes(char **line, int i, char **w, int *er)
 	{
 		if ((*line)[i] == '\\')
 		{
+			if (!((*line)[i + 1]))
+				{
+					i++;
+					*er = 1;
+					return (1);
+				}
 			*w = re_malloc((*line)[i + 1], *w);
 			i += 2;
 		}
@@ -87,11 +93,13 @@ char	*get_word(char **line, int *er)
 	i = skip_space((*line));
 	while (((*line)[i] != ' ' && (*line)[i]) || (!w && (*line)[i]))
 	{
+		if (!w)
+			i += skip_space((*line + i));
 		if ((*line)[i] == '\\')
 			if (if_backslash(line, &i, &w, er))
 				break ;
 		if ((*line)[i] == '\'')
-			i = if_double_quotes(line, i, &w, er);
+			i = if_single_quotes(line, i, &w, er);
 		if ((*line)[i] == '\"')
 			i = if_double_quotes(line, i, &w, er);
 		while ((*line)[i] && (*line)[i] != ' ' && (*line)[i] != '\\'

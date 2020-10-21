@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 19:16:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/21 13:04:37 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 13:39:24 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		slip_2_mas(char ***dst, char ***src)
 	char	**b;
 	size_t	size;
 
-	if (ft_array_size(*src) == 1)
+	if (!(*src) || ft_array_size(*src) == 1)
 		return ;
 	size = ft_array_size(*dst) + ft_array_size(*src);
 	a = (char **)malloc(sizeof(char *) * size);

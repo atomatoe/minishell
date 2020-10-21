@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/20 18:05:02 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 14:37:35 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,12 @@ int		main(int argc, char **argv, char **env)
 	}
 	return (0);
 }
+
+/*
+Баги Ани:
+	1. echo "" "" "" "" "" "" "" > test "" "" "" >> test2 | cat -e
+	2. echo test "test" "" "
+	3. |||;\\:>>><<<<<>>><<<>;;;;;||||
+	4. sdffsadas; sdafbsa; fsdasadfbd;
+	5. gfdsafgdbs > gfbnbxzdsfb > gfdsafb >
+*/
