@@ -4,7 +4,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 SRC = main.c parser/wait_str.c parser/create_lst.c parser/add_lst.c\
 	 parser/split_words1.c parser/free_cmd.c parser/split_words2.c \
-	 parser/print_lst.c parser/record_redir.c
+	 parser/print_lst.c parser/record_redir.c mini/ft_env.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 

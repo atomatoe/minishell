@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   split_words2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:47:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/21 14:38:57 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 16:47:50 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 char	*re_malloc(char c, char *w)
 {

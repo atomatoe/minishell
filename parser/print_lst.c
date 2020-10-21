@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:58:19 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/20 19:05:21 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 16:47:30 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 void	print_lst(t_commands *cmd)
 {

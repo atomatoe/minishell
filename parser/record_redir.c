@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   record_redir.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 19:16:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/21 13:39:24 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 16:47:35 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 void		record_mas_to_mas(char ***m1, char **m2, int start)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   wait_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 12:52:55 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/20 19:10:42 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 16:47:56 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 void		wait_str(char **line)
 {

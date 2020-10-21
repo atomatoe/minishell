@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   split_words1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 12:45:58 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/20 18:22:56 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/21 16:47:46 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "../minishell.h"
 
 t_list	*line_to_lst(char *line, int *er)
 {
