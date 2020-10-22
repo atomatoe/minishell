@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/22 12:25:34 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 14:17:43 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 typedef	struct			s_commands
 {
 	char				*cmd;
+	char				*cmd_dir;
 	char				**arg;
+	int					dir_find;
 	int					type_redir;
 	int					invalid;
 	struct s_commands	*redir;

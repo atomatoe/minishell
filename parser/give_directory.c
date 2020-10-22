@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:41:33 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 13:26:35 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/22 14:21:44 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static int ft_give_directory(t_data *all, char *command)
 	int count;
 	char *adress;
 	char *ad;
-
+	
+	// comand = ls
+	// PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki    ==   	all->env[all->env_path_i]
+	// adress = 0000000
 	count = 0;
 	i = ft_strlen(all->env[all->env_path_i]) + ft_strlen(command);
 	if(!(adress = (char *)malloc(sizeof(char) * i + 1)))
@@ -52,6 +55,7 @@ static int ft_give_directory(t_data *all, char *command)
 		count++;
 	}
 	free(adress);
+	adress = NULL;
 	return(0);
 }
 
@@ -59,8 +63,8 @@ void	give_directory(t_commands *lst, t_data *all)
 {
 	if (ft_give_directory(all, lst->cmd) == 1)
 	{
-		free(lst->arg[0]);
-		lst->arg[0] = ft_strdup(all->file_dir);
+		lst->dir_find = 1;
+		lst->cmd_dir = ft_strdup(all->file_dir);
 		free(all->file_dir);
 		all->file_dir = NULL;
 	}
