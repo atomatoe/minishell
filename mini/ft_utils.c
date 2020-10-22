@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:29:34 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/22 10:05:09 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 17:52:31 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,33 @@ char **free_msv(char **str)
     free(str);
     str = NULL;
     return (str);
+}
+
+int ft_str_check(char *str, char **arg)
+{
+	int i;
+	int g;
+	int k;
+	int count;
+
+	k = 0;
+	while(str[k] != '=')
+		k++;
+	count = 1;
+	i = ft_strlen_msv(arg);
+	while(i != 1)
+	{
+		g = 0;
+		while(str[g] == arg[count][g])
+		{
+			g++;
+			if(arg[g] == '\0' && g == k)
+				return(1);
+			if(str[g] == '=' && g == k)
+				return(1);
+		}
+		count++;
+		i--;
+	}
+	return (0);
 }

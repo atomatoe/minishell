@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 14:25:00 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/22 16:39:27 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ t_commands		*create_lst(char *line, t_data *all)
 	cmd->next = NULL;
 	cmd->pipe = NULL;
 	cmd->redir = NULL;
+	cmd->cmd_dir = NULL;
 	point = 0;
 	end_cmd = 0;
 	if (*line)

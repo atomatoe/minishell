@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   give_directory.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:41:33 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 15:59:14 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/22 17:55:54 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 static int ft_give_directory(t_data *all, char *command)
 {
-	// all->env[all->env_path_i]  =   PATH=/Users/atomatoe/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Users/atomatoe/.brew/bin
-	// comand = ls
-	printf("command = '%s'\n", command);
-	printf("'%s'\n", all->env[all->env_path_i]);
 	int i;
 	int g;
 	char *tmp;
@@ -37,11 +33,10 @@ static int ft_give_directory(t_data *all, char *command)
 			if (all->env[all->env_path_i][i] == ':')
 				i++;
 			tmp[g] = '/';
-			buf = ft_strdup(tmp);//здесь работает только оригинальные strdup
+			buf = ft_strdup(tmp);
+			free(tmp);
 			tmp = ft_strjoin(buf, command);
-			// printf("command' = '%s'\n", tmp);
 			free(buf);
-			//printf("command = '%s'\n", tmp);
 			if(access(tmp, 0) == 0)
 			{
 				all->file_dir = ft_strdup(tmp);
@@ -53,6 +48,7 @@ static int ft_give_directory(t_data *all, char *command)
 			g = 0;
 		}
 	}
+	free(tmp);
 	return (0);
 }
 
