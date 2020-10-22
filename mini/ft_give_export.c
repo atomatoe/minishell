@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:45:59 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/21 19:00:39 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 11:58:26 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ int ft_give_export(t_commands *cmd, t_data *all)
 	}
 	all->env = free_msv(all->env);
 	all->env = ft_strdup_msv(tmp);
+	printf("TESTING\n");
 	return (0);
 }

@@ -6,31 +6,57 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 18:41:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/21 19:00:36 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 12:11:51 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-// static char *ft_env_replace_home(t_data *all)
-// {
-//     printf("%s\n", all->env[all->env_home_dir]);
-//     return("NULL");
-// }
+static void ft_env_update(t_data *all, char *old_pwd)
+{
+	char tmp[1000];
+
+	free(all->env[all->env_old_dir_i]);
+    all->env[all->env_old_dir_i] = ft_strjoin("OLDPWD=", old_pwd);
+	getcwd(tmp, 1000);
+	free(all->env[all->env_dir_i]);
+	all->env[all->env_dir_i] = ft_strjoin("PWD=", tmp);
+}
+
+static char *ft_env_replace_home(t_data *all)
+{
+    char *tmp;
+    int i;
+    int j;
+
+    j = 0;
+    i = 5;
+    if(!(tmp = (char *)malloc(sizeof(char) * (ft_strlen(all->env[all->env_home_dir]) + 1))))
+		return (NULL);
+    while(all->env[all->env_home_dir][i] != '\0')
+    {
+        tmp[j] = all->env[all->env_home_dir][i];
+        j++;
+        i++;
+    }
+    tmp[j] = '\0';
+    return(tmp);
+}
 
 int ft_give_cd(t_commands *cmd, t_data *all)
 {
-    // char *tmp;
+    char *tmp;
+    char res[1000];
 
-    // if(!(tmp = (char *)malloc(sizeof(char) * ft_strlen(all->env[all->env_home_dir]) + 1)))
-	// 	return (-1);
-    ft_strlen(all->env[0]);
+    getcwd(res, 1000);
     if(cmd->arg[1])
         chdir(cmd->arg[1]);
-    // else
-    // {
-    //     //tmp = ft_env_replace_home(all);
-    //     chdir(tmp);
-    // }
+    else
+    {
+        tmp = ft_env_replace_home(all);
+        chdir(tmp);
+        free(tmp);
+    }
+	ft_env_update(all, res);
     return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:29:34 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/21 19:00:43 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 10:05:09 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char **ft_strdup_msv(char **str)
 		tmp[count] = str[count];
 		count++;
 	}
-	free(str);
+	free_msv(str);
 	return(tmp);
 }
 

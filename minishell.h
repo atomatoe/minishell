@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/21 18:57:40 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 12:25:34 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void				ft_give_env(t_commands *cmd, t_data *all);
 int					ft_give_export(t_commands *cmd, t_data *all);
 int					ft_give_unset(t_commands *cmd, t_data *all);
 int					ft_give_command(t_commands *cmd, t_data *all);
-int ft_give_cd(t_commands *cmd, t_data *all);
+int					ft_give_cd(t_commands *cmd, t_data *all);
+int					ft_give_echo(t_commands *cmd);
 
 #endif
