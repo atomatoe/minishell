@@ -26,6 +26,8 @@ void	free_cmd(t_commands *cmd)
 			free_str(&cmd->arg);
 		if (cmd->cmd)
 			free(cmd->cmd);
+		if (cmd->cmd_dir)
+			free(cmd->cmd_dir);
 		free (cmd);
 	}
 }
