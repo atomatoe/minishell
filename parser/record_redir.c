@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   record_redir.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 19:16:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 16:40:14 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 19:42:57 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		slip_2_mas(char ***dst, char ***src)
 	a[size - 1] = NULL;
 	record_mas_to_mas(&a, (*dst), 0);
 	record_mas_to_mas(&a, (*src) + 1, ft_array_size(*dst));
-	free_str(dst);
+	free_msv(*dst);
 	b = (char **)malloc(sizeof(char *) * 2);
 	b[1] = NULL;
 	b[0] = ft_strdup((*src)[0]);

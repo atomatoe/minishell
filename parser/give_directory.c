@@ -16,6 +16,7 @@ static int ft_give_directory(t_data *all, char *command, t_commands *lst)
 	char *buf;
 	g = 0;
 	i = 5;
+	// ft_putstr_fd(all->env[all->env_path_i], 1);
 	if(!(tmp = (char *)malloc(sizeof(char) * (ft_strlen(all->env[all->env_path_i]) + 1))))
 		return(-1);
 	tmp[ft_strlen(all->env[all->env_path_i])] = '\0';
@@ -29,7 +30,7 @@ static int ft_give_directory(t_data *all, char *command, t_commands *lst)
 			if (all->env[all->env_path_i][i] == ':')
 				i++;
 			tmp[g] = '/';
-			buf = ft_strdup(tmp);//здесь работает только оригинальные strdup
+			buf = ft_strdup(tmp);
 			free(tmp);
 			tmp = ft_strjoin(buf, command);
 			free(buf);

@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:58:19 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 14:29:17 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/22 19:36:01 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	print_lst(t_commands *cmd)
 	{
 		if (cmd->arg)
 		{
+			printf("---cmd[%s]\n", cmd->cmd);
 			while (cmd->arg[i])
 			{
 				printf("---arg[%s]\n", cmd->arg[i]);

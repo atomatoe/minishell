@@ -23,7 +23,7 @@ void	free_cmd(t_commands *cmd)
 		if (cmd->next)
 			free_cmd(cmd->next);
 		if (cmd->arg)
-			free_str(&cmd->arg);
+			free_msv(cmd->arg);
 		if (cmd->cmd)
 			free(cmd->cmd);
 		if (cmd->cmd_dir)
