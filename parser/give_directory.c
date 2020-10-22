@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   give_directory.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:41:33 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/21 18:29:57 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 13:26:35 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ static int ft_give_directory(t_data *all, char *command)
 	char *ad;
 
 	count = 0;
-	i = 4;
-	if(!(adress = (char *)malloc(sizeof(char) * ft_strlen(all->env[all->env_path_i]) + ft_strlen(command) + 1)))
+	i = ft_strlen(all->env[all->env_path_i]) + ft_strlen(command);
+	if(!(adress = (char *)malloc(sizeof(char) * i + 1)))
 		return(-1);
+	adress[i] = '\0';
+	i = 4;
 	while(all->env[all->env_path_i][++i] != '\0')
 	{
 		if(all->env[all->env_path_i][i] == ':')
@@ -32,6 +34,7 @@ static int ft_give_directory(t_data *all, char *command)
 			ad = ft_strjoin(adress, command);
 			free(adress);
 			adress = ad;
+			ad = NULL;
 			if(access(adress, 0) == 0)
 			{
 				all->file_dir = ft_strdup(adress);
