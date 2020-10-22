@@ -6,17 +6,9 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:41:33 by skarry            #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/10/22 17:55:54 by atomatoe         ###   ########.fr       */
-=======
-/*   Updated: 2020/10/22 16:08:47 by skarry           ###   ########.fr       */
->>>>>>> 3272c6707a0d0b492c03bb2bbd867fcc3ee56bda
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../minishell.h"
 
-static int ft_give_directory(t_data *all, char *command)
+static int ft_give_directory(t_data *all, char *command, t_commands *lst)
 {
 	int i;
 	int g;
@@ -37,15 +29,13 @@ static int ft_give_directory(t_data *all, char *command)
 			if (all->env[all->env_path_i][i] == ':')
 				i++;
 			tmp[g] = '/';
-			buf = ft_strdup(tmp);
+			buf = ft_strdup(tmp);//здесь работает только оригинальные strdup
 			free(tmp);
 			tmp = ft_strjoin(buf, command);
 			free(buf);
 			if(access(tmp, 0) == 0)
 			{
-				all->file_dir = ft_strdup(tmp);
-				free(tmp);
-				tmp = NULL;
+				lst->cmd_dir = tmp;
 				return(1);
 			}
 			tmp = ft_strzero(tmp);
@@ -58,13 +48,8 @@ static int ft_give_directory(t_data *all, char *command)
 
 void	give_directory(t_commands *lst, t_data *all)
 {
-	if (ft_give_directory(all, lst->cmd) == 1)
+	if (ft_give_directory(all, lst->cmd, lst) == 1)
 	{
 		lst->dir_find = 1;
-		lst->cmd_dir = ft_strdup(all->file_dir);
-		free(all->file_dir);
-		all->file_dir = NULL;
 	}
-	else
-		return ;
 }
