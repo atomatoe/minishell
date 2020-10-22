@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 19:16:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 19:42:57 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/22 21:29:35 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		record_mas_to_mas(char ***m1, char **m2, int start)
 	i = 0;
 	while (m2[i])
 	{
-		(*m1)[start] = (char *)malloc(ft_strlen(m2[i]) + 1);
+		(*m1)[start] = (char *)ft_calloc(ft_strlen(m2[i]) + 1, 1);
 		j = 0;
 		while (m2[i][j])
 		{
@@ -42,12 +42,12 @@ void		slip_2_mas(char ***dst, char ***src)
 	if (!(*src) || ft_array_size(*src) == 1)
 		return ;
 	size = ft_array_size(*dst) + ft_array_size(*src);
-	a = (char **)malloc(sizeof(char *) * size);
+	a = (char **)ft_calloc(sizeof(char *) * size, 1);
 	a[size - 1] = NULL;
 	record_mas_to_mas(&a, (*dst), 0);
 	record_mas_to_mas(&a, (*src) + 1, ft_array_size(*dst));
 	free_msv(*dst);
-	b = (char **)malloc(sizeof(char *) * 2);
+	b = (char **)ft_calloc(sizeof(char *) * 2, 1);
 	b[1] = NULL;
 	b[0] = ft_strdup((*src)[0]);
 	size = 0;
@@ -79,6 +79,7 @@ void		record_redir(t_commands *cmd, t_data *all)
 	while (next)
 	{
 		give_directory(next, all);
+		all->arg += 0;
 		pipe = next->pipe;
 		while (pipe)
 		{

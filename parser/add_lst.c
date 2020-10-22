@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_lst.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 18:38:41 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/21 16:47:04 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 20:18:32 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_commands	*create_one_lst(t_commands *lst, int t)
 {
 	t_commands	*new;
 
-	new = (t_commands *)malloc(sizeof(t_commands));
+	new = (t_commands *)ft_calloc(sizeof(t_commands), 1);
 	if (t == 1)
 		lst->redir = new;
 	if (t == 2)

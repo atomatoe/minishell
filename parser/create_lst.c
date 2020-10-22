@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 16:39:27 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 21:21:03 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,10 @@ void		write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line
 	line2 = ft_strtosup(line + *point, (*end_cmd - *point));
 	s_point->arg = line_to_mas(line2, &s_point->invalid);
 	free(line2);
-	s_point->cmd = ft_strdup(s_point->arg[0]);
 	if (!s_point->arg[0])
 		s_point->invalid = 1;
+	else
+		s_point->cmd = ft_strdup(s_point->arg[0]);
 	*point += skip_space(line + *point);
 	s_point->type_redir = 0;
 	if (line[*end_cmd] == '<')
@@ -74,7 +75,7 @@ t_commands		*create_lst(char *line, t_data *all)
 	size_t		end_cmd;
 	t_commands	*cmd;
 
-	cmd = (t_commands *)malloc(sizeof(t_commands));
+	cmd = (t_commands *)ft_calloc(sizeof(t_commands), 1);
 	cmd->cmd = NULL;
 	cmd->arg = NULL;
 	cmd->next = NULL;

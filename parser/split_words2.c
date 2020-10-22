@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_words2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:47:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/21 16:47:50 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 22:47:07 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,16 @@ char	*re_malloc(char c, char *w)
 
 	if (!w)
 	{
-		v = (char *)malloc(2);
+		v = (char *)ft_calloc(2, 1);
 		v[0] = c;
 		v[1] = '\0';
 		return (v);
 	}
-	v = (char *)malloc(ft_strlen(w) + 2);
+	v = (char *)ft_calloc(ft_strlen(w) + 2, 1);
 	i = -1;
 	while (w[++i])
 		v[i] = w[i];
 	v[i++] = c;
-	v[i] = '\0';
 	free (w);
 	return (v);
 }

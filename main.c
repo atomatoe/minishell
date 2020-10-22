@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/22 18:56:07 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 22:44:34 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ int		main(int argc, char **argv, char **env)
 	{
 		wait_str(&line);
 		cmd = create_lst(line, all);
-		ft_start(cmd, all);
 		free (line);
+		line = NULL;
+		// ft_start(cmd, all);
 		print_lst(cmd);
 		free_cmd(cmd);
-		line = NULL;
 	}
 	return (0);
 }
