@@ -14,15 +14,13 @@
 
 int ft_give_unset(t_commands *cmd, t_data *all)
 {
-	cmd->cmd += 0;
-	all->env[0] += 0;
 	int i;
 	int count;
 	char **tmp;
 
 	count = 0;
 	i = 0;
-	if(!(tmp = (char **)malloc(sizeof(char*) * (ft_strlen_msv(all->env) + 2))))
+	if(!(tmp = (char **)malloc(sizeof(char*) * (ft_strlen_msv(all->env) + 1))))
 		return (-1);
 	while(all->env[count])
 	{
@@ -33,7 +31,8 @@ int ft_give_unset(t_commands *cmd, t_data *all)
 		count++;
 		i++;
 	}
-	all->env = free_msv(all->env);
-	all->env = ft_strdup_msv(tmp);
+	free_msv(all->env);
+	all->env = NULL;
+	all->env = tmp;
 	return(0);
 }

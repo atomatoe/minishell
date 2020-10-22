@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/22 17:54:20 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/22 18:56:03 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int ft_give_command(t_commands *cmd, t_data *all)
    	    perror(NULL);
     else if(pid == 0)
 	{
-		execve(cmd->arg[0], cmd->arg, all->env);
+		execve(cmd->cmd_dir, cmd->arg, all->env);
 		perror(NULL);
 	}
     else
