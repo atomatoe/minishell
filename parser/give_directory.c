@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:41:33 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 15:17:20 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/22 15:59:14 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int ft_give_directory(t_data *all, char *command)
 			if (all->env[all->env_path_i][i] == ':')
 				i++;
 			tmp[g] = '/';
-			buf = ft_strdup(tmp);
+			buf = ft_strdup(tmp);//здесь работает только оригинальные strdup
 			tmp = ft_strjoin(buf, command);
 			// printf("command' = '%s'\n", tmp);
 			free(buf);
@@ -65,4 +65,6 @@ void	give_directory(t_commands *lst, t_data *all)
 		free(all->file_dir);
 		all->file_dir = NULL;
 	}
+	else
+		return ;
 }
