@@ -67,7 +67,7 @@ int		ft_give_directory(t_data *all, char *command, t_commands *lst)
 	free_msv(tmp);
 	if (if_full_path(lst, command))
 		return (1);
-	if (if_local_path(lst, command, all->env_dir))
+	if (if_local_path(lst, command, all->env[all->env_dir_i]))
 		return (1);
 	return (0);
 }

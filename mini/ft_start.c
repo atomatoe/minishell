@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/23 17:19:54 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 19:08:50 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	do_cmd(t_commands *cmd, t_data *all)
 		else if(cmd->dir_find == 1)
 			ft_give_command(cmd, all);
 	}
-
 }
 
 int ft_start (t_commands *cmd, t_data *all)

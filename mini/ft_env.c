@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/23 16:12:16 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 18:38:53 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void ft_init_struct(t_data *all)
 	all->env = NULL;
     all->count = 0;
 	all->env_home_dir = 0;
-	all->env_dir = NULL;
 	all->env_dir_i = 0;
 	all->env_old_dir_i = 0;
 	all->env_path_i = 0;
@@ -33,13 +32,15 @@ void ft_parse_env(t_data *all)
 	int i;
 
 	i = 0;
+	all->env_dir_i = -1;
+	all->env_home_dir = -1;
+	all->env_old_dir_i = -1;
+	all->env_path_i = -1;
+	all->last_env = -1;
 	while(all->env[i])
 	{
 		if(ft_strncmp(all->env[i], "PWD=", 4) == 0)
-        {
-            all->env_dir = ft_strdup(all->env[i]);
             all->env_dir_i = i;
-        }
 		if(ft_strncmp(all->env[i], "HOME=", 5) == 0)
             all->env_home_dir = i;
         if(ft_strncmp(all->env[i], "OLDPWD=", 7) == 0)

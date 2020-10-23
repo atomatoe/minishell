@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/23 16:11:59 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 18:35:00 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef	struct	s_data
     int count;
     char **env;
 	int env_home_dir; // index home=/users/atomatoe
-	char *env_dir; // текущяя директория (pwd)
 	int	env_dir_i; // в какой строке env лежит текущая директория
 	int	env_old_dir_i; // в какой строке env лежит oldpwd=
 	int env_path_i; // в какой строке лежит PATH=
