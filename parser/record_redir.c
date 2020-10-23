@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 19:16:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 21:29:35 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 15:01:47 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,7 @@ void		record_redir(t_commands *cmd, t_data *all)
 	next = cmd;
 	while (next)
 	{
-		give_directory(next, all);
-		all->arg += 0;
-		pipe = next->pipe;
+		pipe = next;
 		while (pipe)
 		{
 			give_directory(pipe, all);
