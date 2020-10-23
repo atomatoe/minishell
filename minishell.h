@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/23 15:45:18 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/23 16:07:31 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void				ft_parse_env(t_data *all);
 int					give_directory(t_commands *lst, t_data *all);
 void				init_struct_cmd(t_commands *lst);
 int					give_variable(char **env, char *var);
+char				*re_malloc(char c, char *w);
 //////// utils:
 char 				*ft_strzero(char *str);
 char				**ft_strdup_msv(char **str);
