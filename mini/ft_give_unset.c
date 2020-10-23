@@ -12,6 +12,35 @@
 
 #include "../minishell.h"
 
+static int ft_str_check_uns(char *str, char **arg)
+{
+	int i;
+	int g;
+	int k;
+	int count;
+
+	if(str == NULL)
+		return(0);
+	k = 0;
+	while(str[k] != '=')
+		k++;
+	count = 1;
+	i = ft_strlen_msv(arg);
+	while(i != 1)
+	{
+		g = 0;
+		while(str[g] == arg[count][g])
+		{
+			g++;
+			if(arg[count][g] == '\0' && str[g] == '=')
+				return(1);
+		}
+		count++;
+		i--;
+	}
+	return (0);
+}
+
 int ft_give_unset(t_commands *cmd, t_data *all)
 {
 	int i;
@@ -22,15 +51,15 @@ int ft_give_unset(t_commands *cmd, t_data *all)
 	i = 0;
 	if(!(tmp = (char **)malloc(sizeof(char*) * (ft_strlen_msv(all->env) + 1))))
 		return (-1);
-	while(all->env[count])
+	while(all->env[count] != NULL)
 	{
-		while(ft_str_check(all->env[count], cmd->arg) == 1)
-			count++;
-		if(all->env[count])
-			tmp[i] = ft_strdup(all->env[count]);
+		tmp[i] = ft_strdup(all->env[count]);
 		count++;
 		i++;
+		if(ft_str_check_uns(all->env[count], cmd->arg) == 1)
+			count++;
 	}
+	tmp[i] = NULL;
 	free_msv(all->env);
 	all->env = NULL;
 	all->env = tmp;
