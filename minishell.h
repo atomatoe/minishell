@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/23 13:10:46 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 15:45:18 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ int					ft_give_command(t_commands *cmd, t_data *all);
 int					ft_give_cd(t_commands *cmd, t_data *all);
 int					ft_give_echo(t_commands *cmd);
 int					ft_str_check(char *str, char **arg);
+int					ft_give_redir(t_commands *cmd, t_data *all);
 
 #endif

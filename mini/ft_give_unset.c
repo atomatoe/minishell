@@ -53,11 +53,12 @@ int ft_give_unset(t_commands *cmd, t_data *all)
 		return (-1);
 	while(all->env[count] != NULL)
 	{
-		tmp[i] = ft_strdup(all->env[count]);
+		if(ft_str_check_uns(all->env[count], cmd->arg) != 1)
+		{
+			tmp[i] = ft_strdup(all->env[count]);
+			i++;
+		}
 		count++;
-		i++;
-		if(ft_str_check_uns(all->env[count], cmd->arg) == 1)
-			count++;
 	}
 	tmp[i] = NULL;
 	free_msv(all->env);
