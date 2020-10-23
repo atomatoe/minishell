@@ -6,11 +6,21 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 21:21:03 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 12:38:13 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void		init_struct_cmd(t_commands *lst)
+{
+	lst->cmd = NULL;
+	lst->arg = NULL;
+	lst->next = NULL;
+	lst->pipe = NULL;
+	lst->redir = NULL;
+	lst->cmd_dir = NULL;
+}
 
 size_t		skip_space(char *s)
 {
@@ -32,25 +42,21 @@ size_t		find_end_cmd(char *s)
 	return (i);
 }
 
-void		write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line)
+void		write_data(t_commands *s_point, size_t *point, char *line, t_data *all)
 {
 	char		*line2;
+	size_t	end_cmd;
 
 	line2 = NULL;
-	s_point->cmd = NULL;
-	s_point->arg = NULL;
-	s_point->cmd_dir = NULL;
-	s_point->next = NULL;
-	s_point->pipe = NULL;
-	s_point->redir = NULL;
+	init_struct_cmd(s_point);
 
 	*point += skip_space(line + *point);
-	*end_cmd = *point + find_end_cmd(line + *point);
+	end_cmd = *point + find_end_cmd(line + *point);
 
 	s_point->invalid = 0;
 	s_point->dir_find = 0;
-	line2 = ft_strtosup(line + *point, (*end_cmd - *point));
-	s_point->arg = line_to_mas(line2, &s_point->invalid);
+	line2 = ft_strtosup(line + *point, (end_cmd - *point));
+	s_point->arg = line_to_mas(line2, &s_point->invalid, all);
 	free(line2);
 	if (!s_point->arg[0])
 		s_point->invalid = 1;
@@ -58,13 +64,13 @@ void		write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line
 		s_point->cmd = ft_strdup(s_point->arg[0]);
 	*point += skip_space(line + *point);
 	s_point->type_redir = 0;
-	if (line[*end_cmd] == '<')
+	if (line[end_cmd] == '<')
 		s_point->type_redir = 1;
-	if (line[*end_cmd] == '>')
+	if (line[end_cmd] == '>')
 		s_point->type_redir = 2;
-	if (line[*end_cmd] == '>' && line[*end_cmd + 1] == '>')
+	if (line[end_cmd] == '>' && line[end_cmd + 1] == '>')
 		s_point->type_redir = 3;
-	*point = *end_cmd + 1;
+	*point = end_cmd + 1;
 	if (s_point->type_redir == 3)
 		(*point)++;
 }
@@ -72,22 +78,15 @@ void		write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line
 t_commands		*create_lst(char *line, t_data *all)
 {
 	size_t		point;
-	size_t		end_cmd;
 	t_commands	*cmd;
 
 	cmd = (t_commands *)ft_calloc(sizeof(t_commands), 1);
-	cmd->cmd = NULL;
-	cmd->arg = NULL;
-	cmd->next = NULL;
-	cmd->pipe = NULL;
-	cmd->redir = NULL;
-	cmd->cmd_dir = NULL;
+	init_struct_cmd(cmd);
 	point = 0;
-	end_cmd = 0;
 	if (*line)
 	{
-		write_data(cmd, &point, &end_cmd, line);
-		add_lst(line, cmd, point, end_cmd);
+		write_data(cmd, &point, line, all);
+		add_lst(line, cmd, point, all);
 		record_redir(cmd, all);
 	}
 	return (cmd);

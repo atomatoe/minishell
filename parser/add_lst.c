@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 18:38:41 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 20:18:32 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 13:32:40 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_commands	*create_one_lst(t_commands *lst, int t)
 	return (new);
 }
 
-void		add_lst(char *line, t_commands *cmd, size_t point, size_t end_cmd)
+void		add_lst(char *line, t_commands *cmd, size_t point, t_data *all)
 {
 	t_commands	*pipe;
 	t_commands	*next;
@@ -59,6 +59,6 @@ void		add_lst(char *line, t_commands *cmd, size_t point, size_t end_cmd)
 			pipe = new;
 		}
 		if (new)
-			write_data(new, &point, &end_cmd, line);
+			write_data(new, &point, line, all);
 	}
 }

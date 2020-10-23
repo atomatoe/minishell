@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/22 21:43:59 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 13:10:46 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,19 @@ typedef	struct	s_data
 
 void				wait_str(char **line);
 t_commands			*create_lst(char *line, t_data *all);
-void				add_lst(char *line, t_commands *s_point, size_t point, size_t end_cmd);
-char				**line_to_mas(char *line, int *er);
+void				add_lst(char *line, t_commands *s_point, size_t pointd, t_data *all);
+char				**line_to_mas(char *line, int *er, t_data *all);
 size_t				skip_space(char *s);
 void				free_cmd(t_commands *cmd);
-char				*get_word(char **line, int *er);
-void				write_data(t_commands *s_point, size_t *point, size_t *end_cmd, char *line);
+char				*get_word(char **line, int *er, t_data *all);
+void				write_data(t_commands *s_point, size_t *point, char *line, t_data *all);
 void				print_lst(t_commands *cmd);
 void				record_redir(t_commands *cmd, t_data *all);
-int                 ft_creat_env(t_data *all, char **env);
-void                ft_parse_env(t_data *all);
-int				give_directory(t_commands *lst, t_data *all);
+int					ft_creat_env(t_data *all, char **env);
+void				ft_parse_env(t_data *all);
+int					give_directory(t_commands *lst, t_data *all);
+void				init_struct_cmd(t_commands *lst);
+int					give_variable(char **env, char *var);
 //////// utils:
 char 				*ft_strzero(char *str);
 char				**ft_strdup_msv(char **str);

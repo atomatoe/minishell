@@ -6,20 +6,20 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 12:45:58 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 22:46:12 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 12:39:09 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_list	*line_to_lst(char *line, int *er)
+t_list	*line_to_lst(char *line, int *er, t_data *all)
 {
 	t_list	*i_map;
 	t_list	*point_list;
 	char	*w;
 
 	point_list = NULL;
-	while ((w = get_word(&line, er)))
+	while ((w = get_word(&line, er, all)))
 	{
 		i_map = ft_lstnew(w);
 		ft_lstadd_back(&point_list, i_map);
@@ -27,7 +27,7 @@ t_list	*line_to_lst(char *line, int *er)
 	return (point_list);
 }
 
-char		**line_to_mas(char *line, int *er)
+char		**line_to_mas(char *line, int *er, t_data *all)
 {
 	char	**map;
 	t_list	*point_list;
@@ -35,7 +35,7 @@ char		**line_to_mas(char *line, int *er)
 	int		i;
 	void	*next;
 
-	point_list = line_to_lst(line, er);
+	point_list = line_to_lst(line, er, all);
 	size = ft_lstsize(point_list);
 	if (!(map = (char**)ft_calloc(sizeof(char*) * (size + 1), 1)))
 		return (0);

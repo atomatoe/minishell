@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:47:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 22:47:07 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 14:49:38 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,26 +46,53 @@ int		if_backslash(char **line, int *i, char **w, int *er)
 	return (0);
 }
 
-int		if_double_quotes(char **line, int i, char **w, int *er)
+int		if_dollar(char *line, t_data *all, char **w, int *er)
 {
-	i++;
-	while ((*line)[i] && (*line)[i] != '\"')
+	int		i;
+	int		j;
+	char	*var;
+	int		num_var;
+
+	i = 1;
+	if (!(line[i]))
 	{
-		if ((*line)[i] == '\\')
-		{
-			if (!((*line)[i + 1]))
-				{
-					i++;
-					*er = 1;
-					return (1);
-				}
-			*w = re_malloc((*line)[i + 1], *w);
-			i += 2;
-		}
-		else
-			*w = re_malloc((*line)[i++], *w);
+		*er = 1;
+		return (1);
 	}
-	if ((*line)[i])
+	while (line[i] == 95 || (line[i] > 64 && line[i] < 91) || (line[i] > 96 && line[i] < 123))
+		i++;
+	var = ft_strtosup(line + 1, i - 1);
+	if ((num_var = give_variable(all->env, var)) > -1)
+	{
+		j = ft_strlen(var) + 1;
+		while (all->env[num_var][j])
+		{
+			*w = re_malloc(all->env[num_var][j], *w);
+			j++;
+		}
+	}
+	free(var);
+	return (i);
+}
+
+int		if_double_quotes(char *line, t_data *all, char **w, int *er)
+{
+	int		i;
+
+	i = 1;
+	while (line[i] && line[i] != '\"')
+	{
+		if (line[i] == '\\')
+		{
+			if (if_backslash(&line, &i, w, er))
+				return (1);
+		}
+		else if (line[i] == '$')
+			i += if_dollar(line + i, all, w, er);
+		else
+			*w = re_malloc(line[i++], *w);
+	}
+	if (line[i])
 		i++;
 	else
 		*er = 1;
@@ -82,7 +109,7 @@ int		if_single_quotes(char **line, int i, char **w, int *er)
 	return (i);
 }
 
-char	*get_word(char **line, int *er)
+char	*get_word(char **line, int *er, t_data *all)
 {
 	char	*w;
 	int		i;
@@ -97,15 +124,26 @@ char	*get_word(char **line, int *er)
 		if ((*line)[i] == '\\')
 			if (if_backslash(line, &i, &w, er))
 				break ;
+		if ((*line)[i] == '$')
+			i += if_dollar((*line) + i, all, &w, er);
 		if ((*line)[i] == '\'')
 			i = if_single_quotes(line, i, &w, er);
 		if ((*line)[i] == '\"')
-			i = if_double_quotes(line, i, &w, er);
+		{
+			i += if_double_quotes((*line) + i, all, &w, er);
+			if (*er == 1)
+				break ;
+		}
 		while ((*line)[i] && (*line)[i] != ' ' && (*line)[i] != '\\'
 				&& (*line)[i] != '\'' && (*line)[i] != '\"')
 		{
-			w = re_malloc((*line)[i], w);
-			i++;
+			if ((*line)[i] == '$')
+				i += if_dollar((*line) + i, all, &w, er);
+			else
+			{
+				w = re_malloc((*line)[i], w);
+				i++;
+			}
 		}
 	}
 	*line = *line + i;
