@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:47:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/23 14:49:38 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 16:32:29 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		if_backslash(char **line, int *i, char **w, int *er)
 	return (0);
 }
 
-int		if_dollar(char *line, t_data *all, char **w, int *er)
+int		if_dollar(char *line, t_data *all, char **w)
 {
 	int		i;
 	int		j;
@@ -54,13 +54,13 @@ int		if_dollar(char *line, t_data *all, char **w, int *er)
 	int		num_var;
 
 	i = 1;
-	if (!(line[i]))
-	{
-		*er = 1;
-		return (1);
-	}
 	while (line[i] == 95 || (line[i] > 64 && line[i] < 91) || (line[i] > 96 && line[i] < 123))
 		i++;
+	if (i == 1)
+	{
+		*w = re_malloc('$', *w);
+		return (i);
+	}
 	var = ft_strtosup(line + 1, i - 1);
 	if ((num_var = give_variable(all->env, var)) > -1)
 	{
@@ -88,7 +88,7 @@ int		if_double_quotes(char *line, t_data *all, char **w, int *er)
 				return (1);
 		}
 		else if (line[i] == '$')
-			i += if_dollar(line + i, all, w, er);
+			i += if_dollar(line + i, all, w);
 		else
 			*w = re_malloc(line[i++], *w);
 	}
@@ -125,7 +125,7 @@ char	*get_word(char **line, int *er, t_data *all)
 			if (if_backslash(line, &i, &w, er))
 				break ;
 		if ((*line)[i] == '$')
-			i += if_dollar((*line) + i, all, &w, er);
+			i += if_dollar((*line) + i, all, &w);
 		if ((*line)[i] == '\'')
 			i = if_single_quotes(line, i, &w, er);
 		if ((*line)[i] == '\"')
@@ -138,7 +138,7 @@ char	*get_word(char **line, int *er, t_data *all)
 				&& (*line)[i] != '\'' && (*line)[i] != '\"')
 		{
 			if ((*line)[i] == '$')
-				i += if_dollar((*line) + i, all, &w, er);
+				i += if_dollar((*line) + i, all, &w);
 			else
 			{
 				w = re_malloc((*line)[i], w);
