@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/22 11:12:57 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/23 16:12:16 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void ft_init_struct(t_data *all)
+{
+    all->arg = NULL;
+	all->env = NULL;
+    all->count = 0;
+	all->env_home_dir = 0;
+	all->env_dir = NULL;
+	all->env_dir_i = 0;
+	all->env_old_dir_i = 0;
+	all->env_path_i = 0;
+	all->last_env = 0;
+	all->file_dir = NULL;
+	all->env_old_dir = NULL;
+	all->env_skip_dir = NULL;
+}
 
 void ft_parse_env(t_data *all)
 {

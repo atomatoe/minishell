@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/23 16:07:31 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/23 16:11:59 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int					ft_give_cd(t_commands *cmd, t_data *all);
 int					ft_give_echo(t_commands *cmd);
 int					ft_str_check(char *str, char **arg);
 int					ft_give_redir(t_commands *cmd, t_data *all);
+void				ft_init_struct(t_data *all);
 
 #endif
