@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 12:45:59 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/24 13:32:42 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/24 13:39:18 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,16 @@
 int ft_creat_declare(t_data *all)
 {
     int i;
-    char **tmp;
 
 	i = 0;
-	if(!(tmp = (char **)malloc(sizeof(char*) * (ft_strlen_msv(all->env) + 1))))
+	if(!(all->env_declare = (char **)malloc(sizeof(char*) * (ft_strlen_msv(all->env) + 1))))
 		return (-1);
 	while(all->env[i])
 	{
-		tmp[i] = ft_strdup(all->env[i]);
+		all->env_declare[i] = ft_strdup(all->env[i]);
 		i++;
 	}
-	tmp[i] = NULL;
-	all->env_declare = tmp;
+	all->env_declare[i] = NULL;
 	return(0);
 }
 

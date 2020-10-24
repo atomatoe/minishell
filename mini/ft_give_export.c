@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:45:59 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/24 13:32:07 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/24 13:39:17 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,7 @@ int ft_give_export(t_commands *cmd, t_data *all)
 	g = 0;
 	i = 0;
 	
-	free(all->env_declare);
-	all->env_declare = NULL;
+	free_msv(all->env_declare);
 	if(ft_str_check_declare(cmd->arg) != 1)
 	{
 		ft_declare_x(cmd, all);
