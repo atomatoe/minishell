@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/23 16:13:35 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/24 13:29:16 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		main(int argc, char **argv, char **env)
 	all = (t_data *)malloc(sizeof(t_data));
 	ft_init_struct(all);
 	ft_creat_env(all, env);
+	ft_creat_declare(all);
 	while (1)
 	{
 		wait_str(&line);

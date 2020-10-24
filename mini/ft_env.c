@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/23 18:38:53 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/24 13:15:35 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void ft_init_struct(t_data *all)
 {
     all->arg = NULL;
 	all->env = NULL;
+	all->env_declare = NULL;
     all->count = 0;
 	all->env_home_dir = 0;
 	all->env_dir_i = 0;

@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/23 18:35:00 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/24 13:19:15 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef	struct	s_data
     char **arg;
     int count;
     char **env;
+	char **env_declare;
 	int env_home_dir; // index home=/users/atomatoe
 	int	env_dir_i; // в какой строке env лежит текущая директория
 	int	env_old_dir_i; // в какой строке env лежит oldpwd=
@@ -89,5 +90,9 @@ int					ft_give_echo(t_commands *cmd);
 int					ft_str_check(char *str, char **arg);
 int					ft_give_redir(t_commands *cmd, t_data *all);
 void				ft_init_struct(t_data *all);
+///////
+int ft_declare_x(t_commands *cmd, t_data *all);
+int ft_str_check_declare(char **arg);
+int ft_creat_declare(t_data *all);
 
 #endif
