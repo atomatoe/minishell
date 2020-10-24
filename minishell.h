@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/24 13:19:15 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/24 19:24:58 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,9 @@ void				ft_init_struct(t_data *all);
 int ft_declare_x(t_commands *cmd, t_data *all);
 int ft_str_check_declare(char **arg);
 int ft_creat_declare(t_data *all);
+char **ft_str_replace(char **env, int i, int g);
+int ft_strcmp(char *s1, char *s2);
+char *ft_str_union(char *s1, char *s2);
+//int ft_strcmp_declare(char *s1, char *s2);
 
 #endif
