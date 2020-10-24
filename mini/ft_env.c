@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/24 13:15:35 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/24 15:36:33 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void ft_init_struct(t_data *all)
 {
-    all->arg = NULL;
+	all->mainfd = dup(1);
+	all->arg = NULL;
 	all->env = NULL;
 	all->env_declare = NULL;
-    all->count = 0;
+	all->count = 0;
 	all->env_home_dir = 0;
 	all->env_dir_i = 0;
 	all->env_old_dir_i = 0;
@@ -41,16 +42,16 @@ void ft_parse_env(t_data *all)
 	while(all->env[i])
 	{
 		if(ft_strncmp(all->env[i], "PWD=", 4) == 0)
-            all->env_dir_i = i;
+			all->env_dir_i = i;
 		if(ft_strncmp(all->env[i], "HOME=", 5) == 0)
-            all->env_home_dir = i;
-        if(ft_strncmp(all->env[i], "OLDPWD=", 7) == 0)
-            all->env_old_dir_i = i;
+			all->env_home_dir = i;
+		if(ft_strncmp(all->env[i], "OLDPWD=", 7) == 0)
+			all->env_old_dir_i = i;
 		if(ft_strncmp(all->env[i], "PATH=", 5) == 0)
-            all->env_path_i = i;
+			all->env_path_i = i;
 		i++;
 	}
-    all->last_env = i;
+	all->last_env = i;
 }
 
 int ft_creat_env(t_data *all, char **env)
@@ -70,6 +71,6 @@ int ft_creat_env(t_data *all, char **env)
 		j++;
 	}
 	all->env[j] = NULL;
-    ft_parse_env(all);
+	ft_parse_env(all);
 	return (0);
 }

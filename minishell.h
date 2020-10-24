@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/11 16:55:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/24 19:24:58 by atomatoe         ###   ########.fr       */
+/*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
+/*   Updated: 2020/10/24 20:13:34 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -41,6 +42,7 @@ typedef	struct			s_commands
 
 typedef	struct	s_data
 {
+	int		mainfd;
     char **arg;
     int count;
     char **env;

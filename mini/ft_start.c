@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/24 12:44:44 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/24 18:05:43 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int ft_start (t_commands *cmd, t_data *all)
 		// 		record_arg(pipe, redir);
 		// 	pipe = pipe->pipe;
 		// }
-		do_cmd(next, all);
+		if (!cmd->invalid)
+			do_cmd(next, all);
 		next = next->next;
 	}
 	return(0);
