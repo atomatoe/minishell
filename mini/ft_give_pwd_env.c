@@ -6,21 +6,42 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:19:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/21 19:00:40 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/25 17:59:08 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void ft_give_env(t_commands *cmd, t_data *all)
+static int ft_find_char(char *str)
 {
-    ft_strlen(cmd->cmd);
-    ft_strlen(all->env[0]);
+	int i;
+
+	i = 1;
+	if(str[0] == '\0')
+		return(0);
+	while(str[i] != '\0')
+	{
+		if(str[i] == '=')
+			return(1);
+		i++;
+	}
+	return(0);
+}
+
+void ft_give_env(t_data *all)
+{
     int i;
 
     i = 0;
     while(all->env[i])
-		printf("%s\n", all->env[i++]);
+	{
+        if(ft_find_char(all->env[i]) == 1)
+        {
+            ft_putstr(all->env[i]);
+            write(1, "\n", 1);
+        }
+        i++;
+    }
 }
 
 void ft_give_pwd(t_commands *cmd)

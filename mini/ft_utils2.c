@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/25 16:27:35 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/25 18:39:35 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,34 +42,6 @@ char **ft_str_replace(char **env, int i, int g)
     free(str);
     str = NULL;
     return(env);
-}
-
-char *ft_str_union(char *s1, char *s2)
-{
-    int i;
-
-    i = 0;
-    while(s2[i] != '\0')
-    {
-        s1[i] = s2[i];
-        i++;
-    }
-    s1[i] = '\0';
-    return(s1);
-}
-
-int ft_strcmp_declare(char *s1, char *s2)
-{
-    int i;
-
-    i = 0;
-    while(s2[i] != '\0')
-    {
-        if(s1[i] != s2[i])
-            return(-1);
-        i++;
-    }
-    return (0);
 }
 
 void ft_putstr(char *str)

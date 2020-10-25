@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/25 16:43:47 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/25 18:39:31 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef	struct	s_data
     char **arg;
     int count;
     char **env;
-	char **env_declare;
 	int env_home_dir; // index home=/users/atomatoe
 	int	env_dir_i; // в какой строке env лежит текущая директория
 	int	env_old_dir_i; // в какой строке env лежит oldpwd=
@@ -85,7 +84,7 @@ char				**free_msv(char **str);
 ////////
 int					ft_start (t_commands *cmd, t_data *all);
 void				ft_give_pwd(t_commands *cmd);
-void				ft_give_env(t_commands *cmd, t_data *all);
+void				ft_give_env(t_data *all);
 int					ft_give_export(t_commands *cmd, t_data *all);
 int					ft_give_unset(t_commands *cmd, t_data *all);
 int					ft_give_command(t_commands *cmd, t_data *all);
@@ -95,17 +94,11 @@ int					ft_str_check(char *str, char **arg);
 int					ft_give_redir(t_commands *cmd, t_data *all);
 void				ft_init_struct(t_data *all);
 ///////
-int ft_declare_x(t_commands *cmd, t_data *all);
-int ft_str_check_declare(char **arg);
-int ft_creat_declare(t_data *all);
 char **ft_str_replace(char **env, int i, int g);
 int ft_strcmp(char *s1, char *s2);
-char *ft_str_union(char *s1, char *s2);
 void	do_cmd(t_commands *cmd, t_data *all);
-int ft_strcmp_declare(char *s1, char *s2);
 void ft_putstr(char *str);
-int ft_arg_alpha(t_commands *cmd);
 void ft_error_uns_exp(t_commands *cmd);
-int ft_valid_argument(t_commands *cmd);
+int ft_str_check_uns(char *str, char **arg);
 
 #endif

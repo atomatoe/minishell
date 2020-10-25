@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/25 16:50:30 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/25 18:39:34 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	do_cmd(t_commands *cmd, t_data *all)
 		if(ft_compare_str(cmd->cmd, "pwd") == 1)
 			ft_give_pwd(cmd);
 		else if(ft_compare_str(cmd->cmd, "env") == 1)
-			ft_give_env(cmd, all);
+			ft_give_env(all);
 		else if(ft_compare_str(cmd->cmd, "echo") == 1)
 			ft_give_echo(cmd);
 		else if(ft_compare_str(cmd->cmd, "export") == 1)
@@ -52,7 +52,6 @@ int ft_start (t_commands *cmd, t_data *all)
 	while (next)
 	{
 		if (!next->invalid)
-			if(ft_valid_argument(cmd) == 0)
 				do_cmd(next, all);
 		next = next->next;
 		dup2(all->fd1, 1);
