@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/25 13:04:58 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/25 16:43:47 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 # include "libft/libft.h"
 # include <string.h>
+# include <signal.h>
 
 # define _DEF_	"\x1B[0m"
 # define _RED_	"\x1B[31m"
@@ -102,5 +103,9 @@ int ft_strcmp(char *s1, char *s2);
 char *ft_str_union(char *s1, char *s2);
 void	do_cmd(t_commands *cmd, t_data *all);
 int ft_strcmp_declare(char *s1, char *s2);
+void ft_putstr(char *str);
+int ft_arg_alpha(t_commands *cmd);
+void ft_error_uns_exp(t_commands *cmd);
+int ft_valid_argument(t_commands *cmd);
 
 #endif

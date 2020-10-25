@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/24 21:07:18 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/25 16:50:36 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		main(int argc, char **argv, char **env)
 	ft_init_struct(all);
 	ft_creat_env(all, env);
 	ft_creat_declare(all);
+	signal(SIGINT, SIG_IGN);
 	while (1)
 	{
 		wait_str(&line);
@@ -32,7 +33,7 @@ int		main(int argc, char **argv, char **env)
 		free (line);
 		line = NULL;
 		ft_start(cmd, all);
-		print_lst(cmd);
+		//print_lst(cmd);
 		free_cmd(cmd);
 	}
 	return (0);

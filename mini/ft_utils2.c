@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/25 15:30:36 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/25 16:27:35 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,13 @@ int ft_strcmp_declare(char *s1, char *s2)
         i++;
     }
     return (0);
+}
+
+void ft_putstr(char *str)
+{
+    int i;
+
+    i = 0;
+    while(str[i])
+        write(1, &str[i++], 1);
 }
