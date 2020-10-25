@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/24 21:20:58 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/25 13:04:58 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,6 @@ char **ft_str_replace(char **env, int i, int g);
 int ft_strcmp(char *s1, char *s2);
 char *ft_str_union(char *s1, char *s2);
 void	do_cmd(t_commands *cmd, t_data *all);
-//int ft_strcmp_declare(char *s1, char *s2);
+int ft_strcmp_declare(char *s1, char *s2);
 
 #endif

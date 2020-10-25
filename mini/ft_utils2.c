@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/24 19:24:59 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/25 15:30:36 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ char *ft_str_union(char *s1, char *s2)
     return(s1);
 }
 
-// int ft_strcmp_declare(char *s1, char *s2)
-// {
-//     int i;
+int ft_strcmp_declare(char *s1, char *s2)
+{
+    int i;
 
-//     i = 0;
-//     while(s2[i] != '\0')
-//     {
-//         if(s1[i] != s2[i])
-//             return(-1);
-//         i++;
-//     }
-//     return (0);
-// }
+    i = 0;
+    while(s2[i] != '\0')
+    {
+        if(s1[i] != s2[i])
+            return(-1);
+        i++;
+    }
+    return (0);
+}
