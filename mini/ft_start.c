@@ -6,13 +6,14 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/25 18:39:34 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/25 19:12:22 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 void	do_cmd(t_commands *cmd, t_data *all)
 {
+	ft_parse_env(all);
 	if (cmd->cmd)
 	{
 		if(ft_compare_str(cmd->cmd, "pwd") == 1)
