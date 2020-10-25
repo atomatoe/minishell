@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 19:16:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/23 15:01:47 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/24 21:11:39 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void		record_arg(t_commands *pipe, t_commands *redir)
 	if (redir->redir)
 		record_arg(pipe->redir, redir->redir);
 	slip_2_mas(&pipe->arg, &redir->arg);
+	pipe->invalid += redir->invalid;
 }
 
 void		record_redir(t_commands *cmd, t_data *all)
@@ -85,6 +86,7 @@ void		record_redir(t_commands *cmd, t_data *all)
 			redir = pipe->redir;
 			if (redir)
 				record_arg(pipe, redir);
+			next->invalid += pipe->invalid;
 			pipe = pipe->pipe;
 		}
 		next = next->next;

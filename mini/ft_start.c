@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/24 18:05:43 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/24 21:57:21 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,11 @@ int ft_start (t_commands *cmd, t_data *all)
 	next = cmd;
 	while (next)
 	{
-		// pipe = next;
-		// while (pipe)
-		// {
-		// 	give_directory(pipe, all);
-		// 	redir = pipe->redir;
-		// 	if (redir)
-		// 		record_arg(pipe, redir);
-		// 	pipe = pipe->pipe;
-		// }
-		if (!cmd->invalid)
+		if (!next->invalid)
 			do_cmd(next, all);
 		next = next->next;
+		dup2(all->fd1, 1);
+		dup2(all->fd0, 0);
 	}
 	return(0);
 }

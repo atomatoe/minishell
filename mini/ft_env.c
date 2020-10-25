@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/24 15:36:33 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/24 20:40:29 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void ft_init_struct(t_data *all)
 {
-	all->mainfd = dup(1);
+	all->fd1 = dup(1);
+	all->fd0 = dup(0);
 	all->arg = NULL;
 	all->env = NULL;
 	all->env_declare = NULL;

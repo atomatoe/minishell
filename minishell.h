@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/24 20:13:34 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/24 21:20:58 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ typedef	struct			s_commands
 
 typedef	struct	s_data
 {
-	int		mainfd;
+	int		fd1;
+	int		fd0;
     char **arg;
     int count;
     char **env;
@@ -99,6 +100,7 @@ int ft_creat_declare(t_data *all);
 char **ft_str_replace(char **env, int i, int g);
 int ft_strcmp(char *s1, char *s2);
 char *ft_str_union(char *s1, char *s2);
+void	do_cmd(t_commands *cmd, t_data *all);
 //int ft_strcmp_declare(char *s1, char *s2);
 
 #endif
