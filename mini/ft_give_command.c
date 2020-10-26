@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/25 18:30:01 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 13:19:55 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void		redirects(t_commands *redir)
+int		redirects(t_commands *redir)
 {
 	int			fd;
 
@@ -20,7 +20,8 @@ void		redirects(t_commands *redir)
 	{
 		if (redir->type_redir == 1 && !redir->redir->invalid)
 		{
-			fd = open(redir->redir->cmd, O_CREAT | O_RDWR, S_IRWXU);
+			if ((fd = open(redir->redir->cmd, O_RDWR)) == -1)
+				return (1);
 			dup2(fd, 0);
 		}
 		else
@@ -33,6 +34,7 @@ void		redirects(t_commands *redir)
 		}
 		redir = redir->redir;
 	}
+	return (0);
 }
 
 // int		*pipes(t_commands *pip)
@@ -54,25 +56,24 @@ int			ft_give_command(t_commands *cmd, t_data *all)
 	
 	t_commands	*redir;
 	t_commands	*pip;
-	int		*fd;
+	// int		fd[2];
 
 	if (!cmd->dir_find)
 		return (1);
 	redir = cmd;
 	pip = cmd;
-	if (pip->pipe)
-	{
-		fd = (int *)malloc(sizeof(int) * 2);
-		pipe(fd);
-	}
+	// if (pip->pipe)
+	// {
+	// 	pipe(fd);
+	// 	dup2();
+	// }
 	pid_t pid = fork();
 	if(pid < 0)
 		perror(NULL);
 	else if(pid == 0)
 	{
-		redirects(redir);
-		//write(1, "s\n", 2);
-		execve(cmd->cmd_dir, cmd->arg, all->env);
+		if (!(redirects(redir)))
+			execve(cmd->cmd_dir, cmd->arg, all->env);
 		perror(NULL);
 	}
 	else

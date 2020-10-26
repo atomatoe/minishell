@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:58:19 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 19:36:01 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 12:48:12 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_lst(t_commands *cmd)
 			}
 			printf("---type_redir: %d\n", cmd->type_redir);
 			printf("---invalid: %d\n", cmd->invalid);
-			printf("---dir: %d\n", cmd->dir_find);
+			printf("---dir_find: %d\n", cmd->dir_find);
 			if (cmd->cmd_dir)
 				printf("---dir[%s]\n", cmd->cmd_dir);
 			printf("\n");
