@@ -12,12 +12,12 @@
 
 #include "../minishell.h"
 
-int ft_str_check_uns(char *str, char **arg)
+int		ft_str_check_uns(char *str, char **arg)
 {
-	int i;
-	int g;
-	int k;
-	int count;
+	int	i;
+	int	g;
+	int	k;
+	int	count;
 
 	if(str == NULL)
 		return(0);
@@ -45,11 +45,11 @@ int ft_str_check_uns(char *str, char **arg)
 	return (0);
 }
 
-int ft_give_unset(t_commands *cmd, t_data *all)
+int		ft_give_unset(t_commands *cmd, t_data *all)
 {
-	int i;
-	int count;
-	char **tmp;
+	int		i;
+	int		count;
+	char	**tmp;
 
 	count = 0;
 	i = 0;

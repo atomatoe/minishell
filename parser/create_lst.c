@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/24 13:27:46 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 20:42:20 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ size_t		find_end_cmd(char *s)
 
 void		write_data(t_commands *s_point, size_t *point, char *line, t_data *all)
 {
-	char		*line2;
+	char	*line2;
 	size_t	end_cmd;
 
 	line2 = NULL;

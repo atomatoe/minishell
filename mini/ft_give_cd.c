@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 18:41:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 18:02:15 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 20:35:59 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void ft_env_update(t_data *all, char *old_pwd)
+static void		ft_env_update(t_data *all, char *old_pwd)
 {
-	char tmp[1000];
+	char	tmp[1000];
 
 	free(all->env[all->env_old_dir_i]);
 	all->env[all->env_old_dir_i] = ft_strjoin("OLDPWD=", old_pwd);
@@ -23,11 +23,11 @@ static void ft_env_update(t_data *all, char *old_pwd)
 	all->env[all->env_dir_i] = ft_strjoin("PWD=", tmp);
 }
 
-static char *ft_env_replace_home(t_data *all)
+static char		*ft_env_replace_home(t_data *all)
 {
-	char *tmp;
-	int i;
-	int j;
+	char	*tmp;
+	int		i;
+	int		j;
 
 	j = 0;
 	i = 5;
@@ -43,10 +43,10 @@ static char *ft_env_replace_home(t_data *all)
 	return(tmp);
 }
 
-int ft_give_cd(t_commands *cmd, t_data *all)
+int				ft_give_cd(t_commands *cmd, t_data *all)
 {
-	char *tmp;
-	char res[1000];
+	char	*tmp;
+	char	res[1000];
 
 	getcwd(res, 1000);
 	if(cmd->arg[1])

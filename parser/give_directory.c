@@ -72,7 +72,7 @@ int		ft_give_directory(t_data *all, char *command, t_commands *lst)
 	return (0);
 }
 
-int	give_directory(t_commands *lst, t_data *all)
+int		give_directory(t_commands *lst, t_data *all)
 {
 	if (ft_give_directory(all, lst->cmd, lst) == 1)
 		lst->dir_find = 1;

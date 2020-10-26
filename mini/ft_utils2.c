@@ -6,15 +6,15 @@
 /*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 19:50:47 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 20:41:52 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int ft_strcmp(char *s1, char *s2)
+int		ft_strcmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while(s1[i] != '\0' && s2[i] != '\0')
@@ -28,9 +28,9 @@ int ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-char **ft_str_replace(char **env, int i, int g)
+char	**ft_str_replace(char **env, int i, int g)
 {
-	char *str;
+	char	*str;
 
 	str = ft_strdup(env[i]);
 	free(env[i]);
@@ -44,18 +44,18 @@ char **ft_str_replace(char **env, int i, int g)
 	return(env);
 }
 
-void ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while(str[i])
 		write(1, &str[i++], 1);
 }
 
-int ft_supercheck_arg(char **arg)
+int		ft_supercheck_arg(char **arg)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if(arg[i] == NULL)
@@ -69,10 +69,10 @@ int ft_supercheck_arg(char **arg)
 	return(0);
 }
 
-void ft_signal(int sig)
+void	ft_signal(int sig)
 {
-	int pid;
-	int flag;
+	int	pid;
+	int	flag;
 	
 	pid = waitpid(-1, &flag, WNOHANG);
 	if(sig == SIGINT)
@@ -89,10 +89,10 @@ void ft_signal(int sig)
 	}
 }
 
-void ft_signal_quit(int sig)
+void	ft_signal_quit(int sig)
 {
-	int pid;
-	int flag;
+	int	pid;
+	int	flag;
 
 	(void)sig;
 	pid = waitpid(-1, &flag, WNOHANG);

@@ -6,15 +6,15 @@
 /*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 12:09:28 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 20:09:35 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 20:37:01 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int ft_give_echo(t_data *all, t_commands *cmd)
+int		ft_give_echo(t_data *all, t_commands *cmd)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if(cmd->arg[i] != NULL)

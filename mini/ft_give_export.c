@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:45:59 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 18:02:42 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 20:38:08 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static void ft_printf_declare(char **env)
+static void		ft_printf_declare(char **env)
 {
-	int i;
-	int g;
+	int	i;
+	int	g;
 
 	i = 0;
 	while(env[i])
@@ -46,11 +46,11 @@ static void ft_printf_declare(char **env)
 	}
 }
 
-static void ft_sort_declare(t_data *all)
+static void		ft_sort_declare(t_data *all)
 {
-	int i;
-   int g;
-	char **buf;
+	int		i;
+	int		g;
+	char	**buf;
 
 	i = 0;
 	buf = ft_strdup_msv(all->env);
@@ -70,12 +70,12 @@ static void ft_sort_declare(t_data *all)
 	buf = NULL;
 }
 
-int ft_give_export(t_commands *cmd, t_data *all)
+int				ft_give_export(t_commands *cmd, t_data *all)
 {
-	int i;
-	int g;
-	int count;
-	char **tmp;
+	int		i;
+	int		g;
+	int		count;
+	char	**tmp;
 
 	count = 0;
 	g = 1;

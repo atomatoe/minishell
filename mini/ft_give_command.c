@@ -6,13 +6,13 @@
 /*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 20:13:29 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 20:36:39 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int		redirects(t_commands *redir)
+int			redirects(t_commands *redir)
 {
 	int			fd;
 
@@ -52,7 +52,7 @@ void		pipe_end(t_commands *pip, t_data *all, int fd0, int fd1)
 
 int			ft_give_command(t_commands *cmd, t_data *all)
 {
-	pid_t		pid;
+	pid_t	pid;
 	
 	pid = fork();
 	if(pid < 0)

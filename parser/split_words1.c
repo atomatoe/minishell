@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   split_words1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 12:45:58 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/23 12:39:09 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 20:43:48 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_list	*line_to_lst(char *line, int *er, t_data *all)
+t_list		*line_to_lst(char *line, int *er, t_data *all)
 {
 	t_list	*i_map;
 	t_list	*point_list;

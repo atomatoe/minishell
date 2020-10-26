@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_pwd_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:19:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 18:02:40 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 20:38:38 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-static int ft_find_char(char *str)
+static int	ft_find_char(char *str)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if(str[0] == '\0')
@@ -28,9 +28,9 @@ static int ft_find_char(char *str)
 	return(0);
 }
 
-void ft_give_env(t_data *all)
+void		ft_give_env(t_data *all)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while(all->env[i])
@@ -44,7 +44,7 @@ void ft_give_env(t_data *all)
 	}
 }
 
-void ft_give_pwd(t_commands *cmd)
+void		ft_give_pwd(t_commands *cmd)
 {
 	ft_strlen(cmd->cmd);
 	char tmp[1000];

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:29:34 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 18:03:23 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 20:40:46 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char *ft_strzero(char *str)
+char	*ft_strzero(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while(str[i] != '\0')
@@ -25,10 +25,10 @@ char *ft_strzero(char *str)
 	return(str);
 }
 
-char **ft_strdup_msv(char **str)
+char	**ft_strdup_msv(char **str)
 {
-	char **tmp;
-	int count;
+	char	**tmp;
+	int		count;
 
 	count = 0;
 	while(str[count])
@@ -45,9 +45,9 @@ char **ft_strdup_msv(char **str)
 	return(tmp);
 }
 
-int ft_strlen_msv(char **str)
+int		ft_strlen_msv(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while(str[i])
@@ -55,9 +55,9 @@ int ft_strlen_msv(char **str)
 	return(i);
 }
 
-int ft_compare_str(char *s1, char *s2)
+int		ft_compare_str(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while(s1[i] == s2[i])
@@ -69,9 +69,9 @@ int ft_compare_str(char *s1, char *s2)
 	return (-1);
 }
 
-char **free_msv(char **str)
+char	**free_msv(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
