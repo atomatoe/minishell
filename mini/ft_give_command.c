@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 17:02:35 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 18:01:21 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,25 @@ int		redirects(t_commands *redir)
 	return (0);
 }
 
-// int		*pipes(t_commands *pip)
-// {
-// 	int		*fd;
+void		pipe_end(t_commands *pip, t_data *all)
+{
+	if (pip->pipe)
+	{
+		close(1);
+		dup2(all->fd1, 1);
+		do_cmd(pip->pipe, all);
+	}
+}
 
-// 	if (pip->pipe)
-// 	{
-// 		fd = (int *)malloc(sizeof(int) * 2);
-// 		pipe(fd);
-// 		dup2(fd[1], 1);
-// 	}
-// 	return (fd);
-// }
+void		wait_ex(int fd0, int fd1)
+{
+	{
+		wait(0);
+		dup2(fd0, 0);
+		close(fd1);
+		close(fd0);
+	}
+}
 
 
 int			ft_give_command(t_commands *cmd, t_data *all)
@@ -56,19 +63,17 @@ int			ft_give_command(t_commands *cmd, t_data *all)
 	
 	t_commands	*redir;
 	t_commands	*pip;
+	pid_t		pid;
 	int		fd[2];
 
-	if (!cmd->dir_find)
-		return (1);
 	redir = cmd;
 	pip = cmd;
 	if (pip->pipe)
 	{
 		pipe(fd);
 		dup2(fd[1], 1);
-		// dup2(fd[0], 0);
 	}
-	pid_t pid = fork();
+	pid = fork();
 	if(pid < 0)
 		perror(NULL);
 	else if(pid == 0)
@@ -78,22 +83,7 @@ int			ft_give_command(t_commands *cmd, t_data *all)
 		exit(1);
 	}
 	else
-	{
-		wait(0);
-		dup2(fd[0], 0);
-		close(fd[1]);
-		close(fd[0]);
-	}
-	dup2(all->fd1, 1);
-	if (pip->pipe)
-	{
-		dup2(fd[0], 0);
-		close(1);
-		dup2(all->fd1, 1);
-		do_cmd(pip->pipe, all);
-		return (0);
-	}
-	close(0);
-	dup2(all->fd0, 0);
+		wait_ex(fd[0], fd[1]);
+	pipe_end(pip, all);
 	return (0);
 }

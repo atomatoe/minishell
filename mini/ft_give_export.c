@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:45:59 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 17:38:52 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 18:02:42 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,23 @@ static void ft_printf_declare(char **env)
 
 static void ft_sort_declare(t_data *all)
 {
-    int i;
+	int i;
    int g;
 	char **buf;
 
-    i = 0;
+	i = 0;
 	buf = ft_strdup_msv(all->env);
-    while(buf[i])
-    {
-        g = 0;
-        while(buf[g])
-        {
-            if(ft_strcmp(buf[i], buf[g]) == -1)
-                ft_str_replace(buf, i, g);
-            g++;
-        }
-        i++;
-    }
+	while(buf[i])
+	{
+		g = 0;
+		while(buf[g])
+		{
+			if(ft_strcmp(buf[i], buf[g]) == -1)
+				ft_str_replace(buf, i, g);
+			g++;
+		}
+		i++;
+	}
 	ft_printf_declare(buf);
 	free_msv(buf);
 	buf = NULL;

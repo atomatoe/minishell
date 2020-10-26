@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 17:43:16 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 17:48:16 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,9 @@ void	do_cmd(t_commands *cmd, t_data *all)
 	}
 }
 
-int ft_start (t_commands *cmd, t_data *all)
-{
-	// t_commands	*pipe;
-	t_commands	*next;
-	// t_commands	*redir;
 
-	next = cmd;
+int ft_start (t_commands *next, t_data *all)
+{
 	while (next)
 	{
 		if (!next->invalid)

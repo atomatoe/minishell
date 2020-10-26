@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:29:34 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 15:24:50 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 18:03:23 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 char *ft_strzero(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while(str[i] != '\0')
-    {
-        str[i] = '\0';
-        i++;
-    }
-    return(str);
+	i = 0;
+	while(str[i] != '\0')
+	{
+		str[i] = '\0';
+		i++;
+	}
+	return(str);
 }
 
 char **ft_strdup_msv(char **str)
@@ -71,16 +71,16 @@ int ft_compare_str(char *s1, char *s2)
 
 char **free_msv(char **str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (str[i])
-    {
-        free(str[i]);
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
 		str[i] = NULL;
-        i++;
-    }
-    free(str);
-    str = NULL;
-    return (str);
+		i++;
+	}
+	free(str);
+	str = NULL;
+	return (str);
 }

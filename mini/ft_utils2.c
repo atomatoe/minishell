@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 17:38:46 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 18:03:33 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,59 @@
 
 int ft_strcmp(char *s1, char *s2)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while(s1[i] != '\0' && s2[i] != '\0')
-    {
-        if(s1[i] > s2[i])
-            return(1);
-        if(s1[i] < s2[i])
-            return(-1);
-        i++;
-    }
-    return (0);
+	i = 0;
+	while(s1[i] != '\0' && s2[i] != '\0')
+	{
+		if(s1[i] > s2[i])
+			return(1);
+		if(s1[i] < s2[i])
+			return(-1);
+		i++;
+	}
+	return (0);
 }
 
 char **ft_str_replace(char **env, int i, int g)
 {
-    char *str;
+	char *str;
 
-    str = ft_strdup(env[i]);
-    free(env[i]);
-    env[i]= NULL;
-    env[i] = ft_strdup(env[g]);
-    free(env[g]);
-    env[g] = NULL;
-    env[g] = ft_strdup(str);
-    free(str);
-    str = NULL;
-    return(env);
+	str = ft_strdup(env[i]);
+	free(env[i]);
+	env[i]= NULL;
+	env[i] = ft_strdup(env[g]);
+	free(env[g]);
+	env[g] = NULL;
+	env[g] = ft_strdup(str);
+	free(str);
+	str = NULL;
+	return(env);
 }
 
 void ft_putstr(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while(str[i])
-        write(1, &str[i++], 1);
+	i = 0;
+	while(str[i])
+		write(1, &str[i++], 1);
 }
 
 int ft_supercheck_arg(char **arg)
 {
-    int i;
+	int i;
 
-    i = 1;
-    if(arg[i] == NULL)
-        return(0);
-    while(arg[i])
-    {
-        if(arg[i][0] != '_' && (ft_isalpha(arg[i][0]) != 1))
-            return(i);
-        i++;
-    }
-    return(0);
+	i = 1;
+	if(arg[i] == NULL)
+		return(0);
+	while(arg[i])
+	{
+		if(arg[i][0] != '_' && (ft_isalpha(arg[i][0]) != 1))
+			return(i);
+		i++;
+	}
+	return(0);
 }
 
 void ft_signal(int sig)
