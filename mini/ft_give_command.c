@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 15:21:56 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 15:19:53 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int		redirects(t_commands *redir)
 		{
 			if ((fd = open(redir->redir->cmd, O_RDWR)) == -1)
 				return (1);
-			dup2(fd, 0);
 		}
 		else
 		{
@@ -30,8 +29,9 @@ int		redirects(t_commands *redir)
 				fd = open(redir->redir->cmd, O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
 			if (redir->type_redir == 3 && !redir->redir->invalid)
 				fd = open(redir->redir->cmd, O_CREAT | O_RDWR | O_APPEND, S_IRWXU);
-			dup2(fd, 1);
+			
 		}
+		dup2(fd, (redir->type_redir == 1)? 0 : 1);
 		redir = redir->redir;
 	}
 	return (0);
@@ -56,17 +56,18 @@ int			ft_give_command(t_commands *cmd, t_data *all)
 	
 	t_commands	*redir;
 	t_commands	*pip;
-	// int		fd[2];
+	int		fd[2];
 
 	if (!cmd->dir_find)
 		return (1);
 	redir = cmd;
 	pip = cmd;
-	// if (pip->pipe)
-	// {
-	// 	pipe(fd);
-	// 	dup2();
-	// }
+	if (pip->pipe)
+	{
+		pipe(fd);
+		dup2(fd[1], 1);
+		// dup2(fd[0], 0);
+	}
 	pid_t pid = fork();
 	if(pid < 0)
 		perror(NULL);
@@ -78,12 +79,16 @@ int			ft_give_command(t_commands *cmd, t_data *all)
 	}
 	else
 		wait(0);
+	dup2(all->fd1, 1);
 	if (pip->pipe)
 	{
-		// dup2(1, all->fd1);
-		// dup2(fd[0], 1);
+		dup2(fd[0], 0);
+		close(1);
+		dup2(all->fd1, 1);
 		do_cmd(pip->pipe, all);
-
+		return (0);
 	}
+	close(0);
+	dup2(all->fd0, 0);
 	return (0);
 }
