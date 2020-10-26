@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 15:19:53 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 15:42:15 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,15 @@ int			ft_give_command(t_commands *cmd, t_data *all)
 	{
 		if (!(redirects(redir)))
 			execve(cmd->cmd_dir, cmd->arg, all->env);
-		perror(NULL);
+		exit(1);
 	}
 	else
+	{
 		wait(0);
+		dup2(fd[0], 0);
+		close(fd[1]);
+		close(fd[0]);
+	}
 	dup2(all->fd1, 1);
 	if (pip->pipe)
 	{
