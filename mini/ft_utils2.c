@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 18:03:33 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 19:50:47 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void ft_signal(int sig)
 			ft_putstr_fd("\n", 1);
 			ft_putstr_fd(_YEL_, 1);
 			ft_putstr_fd(BOLD, 1);
-			ft_putstr_fd("minishell> ", 1);
+			ft_putstr_fd("shell> ", 1);
 			ft_putstr_fd(_DEF_, 1);
 		}
 	}
