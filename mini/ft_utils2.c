@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 15:21:45 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 17:38:46 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int ft_supercheck_arg(char **arg)
         return(0);
     while(arg[i])
     {
-        if(arg[i][0] != '_' || (ft_isalpha(arg[i][0]) != 1))
+        if(arg[i][0] != '_' && (ft_isalpha(arg[i][0]) != 1))
             return(i);
         i++;
     }

@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 15:03:08 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 17:43:16 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	do_cmd(t_commands *cmd, t_data *all)
 		else if(ft_compare_str(cmd->cmd, "env") == 1)
 			ft_give_env(all);
 		else if(ft_compare_str(cmd->cmd, "echo") == 1)
-			ft_give_echo(cmd);
+			ft_give_echo(all, cmd);
 		else if(ft_compare_str(cmd->cmd, "export") == 1)
 			ft_give_export(cmd, all);
 		else if(ft_compare_str(cmd->cmd, "unset") == 1)
@@ -39,6 +39,8 @@ void	do_cmd(t_commands *cmd, t_data *all)
 		{
 			ft_putstr(cmd->cmd);
 			write(1, ": command not found\n", 20);
+			free(all->error);
+			all->error = ft_strdup("127");
 		}
 	}
 }

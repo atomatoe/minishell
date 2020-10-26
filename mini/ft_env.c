@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/25 18:06:25 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 17:19:24 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void ft_init_struct(t_data *all)
 {
 	all->fd1 = dup(1);
 	all->fd0 = dup(0);
+	all->error = NULL;
+	all->error = ft_strdup("0");
 	all->arg = NULL;
 	all->env = NULL;
 	all->count = 0;

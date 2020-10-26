@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:45:59 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 15:18:23 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 17:38:52 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int ft_give_export(t_commands *cmd, t_data *all)
 		write(1, "minishell: export: `", 20);
 		ft_putstr(cmd->arg[i]);
 		write(1, "': not a valid identifier\n", 26);
+		free(all->error);
+		all->error = ft_strdup("1");
 		return(0);
 	}
 	i = 0;
