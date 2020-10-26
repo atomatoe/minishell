@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 18:01:21 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 20:13:29 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,11 @@ int		redirects(t_commands *redir)
 	return (0);
 }
 
-void		pipe_end(t_commands *pip, t_data *all)
+void		pipe_end(t_commands *pip, t_data *all, int fd0, int fd1)
 {
+	dup2(fd0, 0);
+	close(fd1);
+	close(fd0);
 	if (pip->pipe)
 	{
 		close(1);
@@ -47,43 +50,19 @@ void		pipe_end(t_commands *pip, t_data *all)
 	}
 }
 
-void		wait_ex(int fd0, int fd1)
-{
-	{
-		wait(0);
-		dup2(fd0, 0);
-		close(fd1);
-		close(fd0);
-	}
-}
-
-
 int			ft_give_command(t_commands *cmd, t_data *all)
 {
-	
-	t_commands	*redir;
-	t_commands	*pip;
 	pid_t		pid;
-	int		fd[2];
-
-	redir = cmd;
-	pip = cmd;
-	if (pip->pipe)
-	{
-		pipe(fd);
-		dup2(fd[1], 1);
-	}
+	
 	pid = fork();
 	if(pid < 0)
 		perror(NULL);
 	else if(pid == 0)
 	{
-		if (!(redirects(redir)))
-			execve(cmd->cmd_dir, cmd->arg, all->env);
+		execve(cmd->cmd_dir, cmd->arg, all->env);
 		exit(1);
 	}
 	else
-		wait_ex(fd[0], fd[1]);
-	pipe_end(pip, all);
+		wait(0);
 	return (0);
 }

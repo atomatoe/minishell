@@ -3,19 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 17:48:16 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 20:11:01 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 void	do_cmd(t_commands *cmd, t_data *all)
 {
-	ft_parse_env(all);
+
+	t_commands	*pip;
+	int		fd[2];
+	t_commands	*redir;
+	
+
+
 	if (cmd->cmd)
 	{
+		pip = cmd;
+		redir = cmd;
+		if (pip->pipe)
+		{
+			pipe(fd);
+			dup2(fd[1], 1);
+		}
+		ft_parse_env(all);
+		redirects(redir);
 		if(ft_compare_str(cmd->cmd, "pwd") == 1)
 			ft_give_pwd(cmd);
 		else if(ft_compare_str(cmd->cmd, "env") == 1)
@@ -42,6 +57,7 @@ void	do_cmd(t_commands *cmd, t_data *all)
 			free(all->error);
 			all->error = ft_strdup("127");
 		}
+		pipe_end(pip, all, fd[0], fd[1]);
 	}
 }
 
