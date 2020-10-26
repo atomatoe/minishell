@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/26 13:35:38 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 15:18:07 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,7 @@ void	do_cmd(t_commands *cmd, t_data *all);
 void ft_putstr(char *str);
 void ft_error_uns_exp(t_commands *cmd);
 int ft_str_check_uns(char *str, char **arg);
+int ft_supercheck_arg(char **arg);
+void ft_signal(int sig);
 
 #endif

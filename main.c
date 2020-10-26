@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 13:39:22 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 15:21:30 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int		main(int argc, char **argv, char **env)
 	all = (t_data *)malloc(sizeof(t_data));
 	ft_init_struct(all);
 	ft_creat_env(all, env);
-	//signal(SIGINT, SIG_IGN);
+	signal(SIGINT, ft_signal);
+	signal(SIGQUIT, ft_signal_quit);
 	while (1)
 	{
 		wait_str(&line);
@@ -37,7 +38,3 @@ int		main(int argc, char **argv, char **env)
 	}
 	return (0);
 }
-
-/*
-	Валидация аргументов в export и unset (1 символ буква либо _  (не isdigit))	
-*/

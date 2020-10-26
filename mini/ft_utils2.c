@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/25 18:39:35 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/26 15:21:45 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,51 @@ void ft_putstr(char *str)
     i = 0;
     while(str[i])
         write(1, &str[i++], 1);
+}
+
+int ft_supercheck_arg(char **arg)
+{
+    int i;
+
+    i = 1;
+    if(arg[i] == NULL)
+        return(0);
+    while(arg[i])
+    {
+        if(arg[i][0] != '_' || (ft_isalpha(arg[i][0]) != 1))
+            return(i);
+        i++;
+    }
+    return(0);
+}
+
+void ft_signal(int sig)
+{
+	int pid;
+	int flag;
+	
+	pid = waitpid(-1, &flag, WNOHANG);
+	if(sig == SIGINT)
+	{
+		flag = 1;
+		if(pid)
+		{
+			ft_putstr_fd("\n", 1);
+			ft_putstr_fd(_YEL_, 1);
+			ft_putstr_fd(BOLD, 1);
+			ft_putstr_fd("minishell> ", 1);
+			ft_putstr_fd(_DEF_, 1);
+		}
+	}
+}
+
+void ft_signal_quit(int sig)
+{
+	int pid;
+	int flag;
+
+	(void)sig;
+	pid = waitpid(-1, &flag, WNOHANG);
+	if(!pid)
+		ft_putendl_fd("Quit: 3", 1);
 }

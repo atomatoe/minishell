@@ -53,6 +53,13 @@ int ft_give_unset(t_commands *cmd, t_data *all)
 
 	count = 0;
 	i = 0;
+	if((i = ft_supercheck_arg(cmd->arg)) != 0)
+	{
+		write(1, "minishell: unset: `", 19);
+		ft_putstr(cmd->arg[i]);
+		write(1, "': not a valid identifier\n", 26);
+		return(0);
+	}
 	if(!(tmp = (char **)malloc(sizeof(char*) * (ft_strlen_msv(all->env) + 1))))
 		return (-1);
 	while(all->env[count] != NULL)
