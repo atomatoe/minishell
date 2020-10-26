@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wait_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 12:52:55 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/26 13:40:08 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/26 13:46:43 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ void		wait_str(char **line)
 		ft_putstr_fd("shell> ", 1);
 		ft_putstr_fd(_DEF_, 1);
 	}
-	get_next_line(0, line);
+	if(!get_next_line(line))
+	{
+		write(1, "exit\n", 5);
+		exit(0);
+	}
 }
