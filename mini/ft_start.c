@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 17:22:16 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 17:31:12 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ void		do_cmd(t_commands *cmd, t_data *all)
 			ft_give_cd(cmd, all);
 		else if (ft_compare_str(cmd->cmd, "exit") == 1)
 		{
-			write(1, "exit\n", 5);
-			exit(ft_atoi(all->error));
+			if(!pip->pipe)
+			{
+				write(1, "exit\n", 5);
+				exit(ft_atoi(all->error));
+			}
 		}
 		else if (cmd->dir_find == 1)
 			ft_give_command(cmd, all);
