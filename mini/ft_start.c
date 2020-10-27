@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 15:17:35 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 15:30:56 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,19 @@ void		do_cmd(t_commands *cmd, t_data *all)
 
 int			ft_start(t_commands *next, t_data *all)
 {
-	while (next && !next->invalid)
+	if (next && !next->invalid)
 	{
-		do_cmd(next, all);
-		next = next->next;
-		dup2(all->fd1, 1);
-		dup2(all->fd0, 0);
+		while (next && !next->invalid)
+		{
+			do_cmd(next, all);
+			next = next->next;
+			dup2(all->fd1, 1);
+			dup2(all->fd0, 0);
+		}
 	}
-	if (next && next->invalid && next->next)
+	else
 	{
-		write(1, "Command not found\n", 19);
+		write(1, "Invalid command\n", 16);
 		free(all->error);
 		all->error = ft_strdup("127");
 	}

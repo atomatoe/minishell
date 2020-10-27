@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 19:16:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 14:56:38 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 16:37:32 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,21 @@ void		record_arg(t_commands *pipe, t_commands *redir)
 	pipe->invalid += redir->invalid;
 }
 
-void		record_valid(t_commands *next)
+void		record_valid_next(t_commands *pipe)
 {
-	if (next->next && next->next->next)
+	if (pipe->pipe)
 	{
-		if (next->next->next && next->next->next->next)
-			record_valid(next->next);
+		record_valid_next(pipe->pipe);
+		pipe->invalid += pipe->pipe->invalid;
+	}
+}
+
+void		record_valid_line(t_commands *next)
+{
+	if ((next->next && next->next->cmd) ||
+			(next->next && next->next->next))
+	{
+		record_valid_line(next->next);
 		next->invalid += next->next->invalid;
 	}
 }
@@ -98,8 +107,10 @@ void		record_redir(t_commands *cmd, t_data *all)
 				record_arg(pipe, redir);
 			pipe = pipe->pipe;
 		}
+		record_valid_next(next);
 		next = next->next;
 	}
 	next = cmd;
-	record_valid(next);
+	next = cmd;
+	record_valid_line(next);
 }
