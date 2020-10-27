@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 15:30:56 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 17:22:16 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ void		do_cmd(t_commands *cmd, t_data *all)
 			dup2(fd[1], 1);
 		}
 		ft_parse_env(all);
-		redirects(redir);//дописать вывод ошибок
+		if (redirects(redir))//дописать вывод ошибок
+		{
+			write(1, "No such file or directory\n", 26);
+			return ;
+		}
 		if (ft_compare_str(cmd->cmd, "pwd") == 1)
 			ft_give_pwd(cmd);
 		else if (ft_compare_str(cmd->cmd, "env") == 1)
