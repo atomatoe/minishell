@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 13:50:32 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 17:10:07 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,6 @@ void					ft_signal_quit(int sig);
 void					pipe_end(t_commands *pip, t_data *all,
 						int fd0, int fd1);
 int						redirects(t_commands *redir);
+int						ft_str_check_exp(char **env, char *arg);
 
 #endif
