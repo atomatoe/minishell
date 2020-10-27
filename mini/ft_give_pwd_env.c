@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_pwd_env.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:19:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 20:38:38 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 12:10:20 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ static int	ft_find_char(char *str)
 	int	i;
 
 	i = 1;
-	if(str[0] == '\0')
-		return(0);
-	while(str[i] != '\0')
+	if (str[0] == '\0')
+		return (0);
+	while (str[i] != '\0')
 	{
-		if(str[i] == '=')
-			return(1);
+		if (str[i] == '=')
+			return (1);
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 void		ft_give_env(t_data *all)
@@ -33,9 +33,9 @@ void		ft_give_env(t_data *all)
 	int	i;
 
 	i = 0;
-	while(all->env[i])
+	while (all->env[i])
 	{
-		if(ft_find_char(all->env[i]) == 1)
+		if (ft_find_char(all->env[i]) == 1)
 		{
 			ft_putstr(all->env[i]);
 			write(1, "\n", 1);
@@ -46,8 +46,9 @@ void		ft_give_env(t_data *all)
 
 void		ft_give_pwd(t_commands *cmd)
 {
-	ft_strlen(cmd->cmd);
 	char tmp[1000];
+
+	ft_strlen(cmd->cmd);
 	getcwd(tmp, 1000);
-	printf("%s\n", tmp);
+	ft_putstr(tmp);
 }

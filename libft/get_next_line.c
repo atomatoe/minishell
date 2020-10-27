@@ -6,17 +6,18 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 15:29:10 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/26 13:47:42 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:08:08 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char *add_char_to_str(char *str, char c, int *size)
+static char		*add_char_to_str(char *str, char c, int *size)
 {
-	char *res;
-	int i = 0;
+	char	*res;
+	int		i;
 
+	i = 0;
 	if (!(res = (char *)malloc(sizeof(char) * (*size) + 1)))
 		return (NULL);
 	while (str && i < (*size))
@@ -31,12 +32,12 @@ static char *add_char_to_str(char *str, char c, int *size)
 	return (res);
 }
 
-int get_next_line(char **line)
+int				get_next_line(char **line)
 {
-	char buffer[1];
-	int bytes;
-	int size;
-	char *tmp;
+	char	buffer[1];
+	int		bytes;
+	int		size;
+	char	*tmp;
 
 	size = 0;
 	tmp = NULL;

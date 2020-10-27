@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/26 20:06:35 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 12:02:43 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ int						ft_give_command(t_commands *cmd, t_data *all);
 int						ft_give_cd(t_commands *cmd, t_data *all);
 int						ft_give_echo(t_data *all, t_commands *cmd);
 int						ft_str_check(char *str, char **arg);
-int						ft_give_redir(t_commands *cmd, t_data *all);
 void					ft_init_struct(t_data *all);
 ///////
 char					**ft_str_replace(char **env, int i, int g);
@@ -105,6 +104,6 @@ int						ft_supercheck_arg(char **arg);
 void					ft_signal(int sig);
 void					ft_signal_quit(int sig);
 void					pipe_end(t_commands *pip, t_data *all, int fd0, int fd1);
-int		redirects(t_commands *redir);
+int						redirects(t_commands *redir);
 
 #endif

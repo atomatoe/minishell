@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 20:41:52 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 13:05:42 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int		ft_strcmp(char *s1, char *s2)
 	int	i;
 
 	i = 0;
-	while(s1[i] != '\0' && s2[i] != '\0')
+	while (s1[i] != '\0' && s2[i] != '\0')
 	{
-		if(s1[i] > s2[i])
-			return(1);
-		if(s1[i] < s2[i])
-			return(-1);
+		if (s1[i] > s2[i])
+			return (1);
+		if (s1[i] < s2[i])
+			return (-1);
 		i++;
 	}
 	return (0);
@@ -34,14 +34,14 @@ char	**ft_str_replace(char **env, int i, int g)
 
 	str = ft_strdup(env[i]);
 	free(env[i]);
-	env[i]= NULL;
+	env[i] = NULL;
 	env[i] = ft_strdup(env[g]);
 	free(env[g]);
 	env[g] = NULL;
 	env[g] = ft_strdup(str);
 	free(str);
 	str = NULL;
-	return(env);
+	return (env);
 }
 
 void	ft_putstr(char *str)
@@ -49,7 +49,7 @@ void	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		write(1, &str[i++], 1);
 }
 
@@ -58,27 +58,27 @@ int		ft_supercheck_arg(char **arg)
 	int	i;
 
 	i = 1;
-	if(arg[i] == NULL)
-		return(0);
-	while(arg[i])
+	if (arg[i] == NULL)
+		return (0);
+	while (arg[i])
 	{
-		if(arg[i][0] != '_' && (ft_isalpha(arg[i][0]) != 1))
-			return(i);
+		if (arg[i][0] != '_' && (ft_isalpha(arg[i][0]) != 1))
+			return (i);
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 void	ft_signal(int sig)
 {
 	int	pid;
 	int	flag;
-	
+
 	pid = waitpid(-1, &flag, WNOHANG);
-	if(sig == SIGINT)
+	if (sig == SIGINT)
 	{
 		flag = 1;
-		if(pid)
+		if (pid)
 		{
 			ft_putstr_fd("\n", 1);
 			ft_putstr_fd(_YEL_, 1);
@@ -96,6 +96,6 @@ void	ft_signal_quit(int sig)
 
 	(void)sig;
 	pid = waitpid(-1, &flag, WNOHANG);
-	if(!pid)
+	if (!pid)
 		ft_putendl_fd("Quit: 3", 1);
 }

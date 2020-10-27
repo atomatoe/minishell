@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:29:34 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 20:40:46 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 13:04:27 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ char	*ft_strzero(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
 		str[i] = '\0';
 		i++;
 	}
-	return(str);
+	return (str);
 }
 
 char	**ft_strdup_msv(char **str)
@@ -31,18 +31,18 @@ char	**ft_strdup_msv(char **str)
 	int		count;
 
 	count = 0;
-	while(str[count])
+	while (str[count])
 		count++;
-	if(!(tmp = (char **)malloc(sizeof(char*) * (count + 1))))
+	if (!(tmp = (char **)malloc(sizeof(char*) * (count + 1))))
 		return (NULL);
 	count = 0;
-	while(str[count])
+	while (str[count])
 	{
 		tmp[count] = ft_strdup(str[count]);
 		count++;
 	}
 	tmp[count] = NULL;
-	return(tmp);
+	return (tmp);
 }
 
 int		ft_strlen_msv(char **str)
@@ -50,9 +50,9 @@ int		ft_strlen_msv(char **str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
-	return(i);
+	return (i);
 }
 
 int		ft_compare_str(char *s1, char *s2)
@@ -60,10 +60,10 @@ int		ft_compare_str(char *s1, char *s2)
 	int	i;
 
 	i = 0;
-	while(s1[i] == s2[i])
+	while (s1[i] == s2[i])
 	{
 		i++;
-		if(s1[i] == '\0' && s2[i] == '\0')
+		if (s1[i] == '\0' && s2[i] == '\0')
 			return (1);
 	}
 	return (-1);

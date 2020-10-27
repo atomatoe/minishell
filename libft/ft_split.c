@@ -6,13 +6,13 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/09 21:37:52 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/22 16:51:26 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:06:36 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void		*free_str(char ***str)
+void			*free_str(char ***str)
 {
 	int i;
 
@@ -22,7 +22,7 @@ void		*free_str(char ***str)
 		free((*str)[i]);
 		i++;
 	}
-	free ((*str)[i]);
+	free((*str)[i]);
 	free((*str));
 	return (NULL);
 }

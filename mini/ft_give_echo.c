@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_echo.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 12:09:28 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 20:37:01 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 12:55:25 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ int		ft_give_echo(t_data *all, t_commands *cmd)
 	int	i;
 
 	i = 1;
-	if(cmd->arg[i] != NULL)
+	if (cmd->arg[i] != NULL)
 	{
-		if(ft_compare_str(cmd->arg[i], "-n") == 1)
+		if (ft_compare_str(cmd->arg[i], "-n") == 1)
 		{
 			i++;
-			while(cmd->arg[i])
+			while (cmd->arg[i])
 			{
-				if(ft_compare_str(cmd->arg[i], "$?") == 1)
+				if (ft_compare_str(cmd->arg[i], "$?") == 1)
 				{
 					ft_putstr(all->error);
 					i++;
@@ -35,13 +35,13 @@ int		ft_give_echo(t_data *all, t_commands *cmd)
 			}
 			free(all->error);
 			all->error = ft_strdup("0");
-			return(0);
+			return (0);
 		}
-		else if(ft_compare_str(cmd->arg[i], "-n") != 1)
+		else if (ft_compare_str(cmd->arg[i], "-n") != 1)
 		{
-			while(cmd->arg[i])
+			while (cmd->arg[i])
 			{
-				if(ft_compare_str(cmd->arg[i], "$?") == 1)
+				if (ft_compare_str(cmd->arg[i], "$?") == 1)
 				{
 					ft_putstr(all->error);
 					i++;
@@ -53,7 +53,7 @@ int		ft_give_echo(t_data *all, t_commands *cmd)
 			write(1, "\n", 1);
 			free(all->error);
 			all->error = ft_strdup("0");
-			return(0);
+			return (0);
 		}
 	}
 	write(1, "\n", 1);

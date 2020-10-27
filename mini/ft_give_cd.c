@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_cd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 18:41:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 20:35:59 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 12:58:10 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,17 @@ static char		*ft_env_replace_home(t_data *all)
 
 	j = 0;
 	i = 5;
-	if(!(tmp = (char *)malloc(sizeof(char) * (ft_strlen(all->env[all->env_home_dir]) + 1))))
+	if (!(tmp = (char *)malloc(sizeof(char) *
+		(ft_strlen(all->env[all->env_home_dir]) + 1))))
 		return (NULL);
-	while(all->env[all->env_home_dir][i] != '\0')
+	while (all->env[all->env_home_dir][i] != '\0')
 	{
 		tmp[j] = all->env[all->env_home_dir][i];
 		j++;
 		i++;
 	}
 	tmp[j] = '\0';
-	return(tmp);
+	return (tmp);
 }
 
 int				ft_give_cd(t_commands *cmd, t_data *all)
@@ -49,7 +50,7 @@ int				ft_give_cd(t_commands *cmd, t_data *all)
 	char	res[1000];
 
 	getcwd(res, 1000);
-	if(cmd->arg[1])
+	if (cmd->arg[1])
 		chdir(cmd->arg[1]);
 	else
 	{

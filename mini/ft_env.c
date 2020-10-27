@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 20:35:05 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 12:58:34 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,15 @@ void	ft_parse_env(t_data *all)
 	all->env_old_dir_i = -1;
 	all->env_path_i = -1;
 	all->last_env = -1;
-	while(all->env[i])
+	while (all->env[i])
 	{
-		if(ft_strncmp(all->env[i], "PWD=", 4) == 0)
+		if (ft_strncmp(all->env[i], "PWD=", 4) == 0)
 			all->env_dir_i = i;
-		if(ft_strncmp(all->env[i], "HOME=", 5) == 0)
+		if (ft_strncmp(all->env[i], "HOME=", 5) == 0)
 			all->env_home_dir = i;
-		if(ft_strncmp(all->env[i], "OLDPWD=", 7) == 0)
+		if (ft_strncmp(all->env[i], "OLDPWD=", 7) == 0)
 			all->env_old_dir_i = i;
-		if(ft_strncmp(all->env[i], "PATH=", 5) == 0)
+		if (ft_strncmp(all->env[i], "PATH=", 5) == 0)
 			all->env_path_i = i;
 		i++;
 	}
@@ -63,11 +63,11 @@ int		ft_creat_env(t_data *all, char **env)
 
 	j = 0;
 	i = 0;
-	while(env[i])
+	while (env[i])
 		i++;
-	if(!(all->env = (char **)malloc(sizeof(char*) * (i + 1))))
+	if (!(all->env = (char **)malloc(sizeof(char*) * (i + 1))))
 		return (-1);
-	while(j != i)
+	while (j != i)
 	{
 		all->env[j] = ft_strdup(env[j]);
 		j++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_export.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:45:59 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/26 20:38:08 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 12:33:11 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ static void		ft_printf_declare(char **env)
 	int	g;
 
 	i = 0;
-	while(env[i])
+	while (env[i])
 	{
 		g = 0;
 		write(1, "declare -x ", 11);
-		if(ft_strchr(env[i], '='))
+		if (ft_strchr(env[i], '='))
 		{
-			while(env[i][g] != '=')
+			while (env[i][g] != '=')
 			{
 				write(1, &env[i][g], 1);
 				g++;
@@ -32,7 +32,7 @@ static void		ft_printf_declare(char **env)
 			write(1, &env[i][g], 1);
 			g++;
 			write(1, "\"", 1);
-			while(env[i][g] != '\0')
+			while (env[i][g] != '\0')
 			{
 				write(1, &env[i][g], 1);
 				g++;
@@ -54,12 +54,12 @@ static void		ft_sort_declare(t_data *all)
 
 	i = 0;
 	buf = ft_strdup_msv(all->env);
-	while(buf[i])
+	while (buf[i])
 	{
 		g = 0;
-		while(buf[g])
+		while (buf[g])
 		{
-			if(ft_strcmp(buf[i], buf[g]) == -1)
+			if (ft_strcmp(buf[i], buf[g]) == -1)
 				ft_str_replace(buf, i, g);
 			g++;
 		}
@@ -79,33 +79,34 @@ int				ft_give_export(t_commands *cmd, t_data *all)
 
 	count = 0;
 	g = 1;
-	if((i = ft_supercheck_arg(cmd->arg)) != 0)
+	if ((i = ft_supercheck_arg(cmd->arg)) != 0)
 	{
 		write(1, "minishell: export: `", 20);
 		ft_putstr(cmd->arg[i]);
 		write(1, "': not a valid identifier\n", 26);
 		free(all->error);
 		all->error = ft_strdup("1");
-		return(0);
+		return (0);
 	}
 	i = 0;
-	if(cmd->arg[1] == NULL)
+	if (cmd->arg[1] == NULL)
 	{
 		ft_sort_declare(all);
-		return(0);
+		return (0);
 	}
-	if(!(tmp = (char **)malloc(sizeof(char*) * (ft_strlen_msv(all->env) + ft_strlen_msv(cmd->arg) + 1))))
+	if (!(tmp = (char **)malloc(sizeof(char*) *
+		(ft_strlen_msv(all->env) + ft_strlen_msv(cmd->arg) + 1))))
 		return (-1);
-	while(all->env[i] != NULL)
+	while (all->env[i] != NULL)
 	{
-		if(ft_str_check_uns(all->env[count], cmd->arg) != 1)
+		if (ft_str_check_uns(all->env[count], cmd->arg) != 1)
 		{
 			tmp[i] = ft_strdup(all->env[count]);
 			i++;
 		}
 		count++;
 	}
-	while(cmd->arg[g])
+	while (cmd->arg[g])
 	{
 		tmp[i] = ft_strdup(cmd->arg[g]);
 		i++;
