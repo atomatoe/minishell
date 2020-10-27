@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:45:59 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 13:34:25 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 17:03:22 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,10 @@ static void		ft_sort_declare(t_data *all)
 int				ft_give_export(t_commands *cmd, t_data *all)
 {
 	int		i;
-	int		g;
 	int		count;
 	char	**tmp;
 
 	count = 0;
-	g = 1;
 	if ((i = ft_supercheck_arg(cmd->arg)) != 0)
 	{
 		write(1, "minishell: export: `", 20);
@@ -97,7 +95,7 @@ int				ft_give_export(t_commands *cmd, t_data *all)
 	if (!(tmp = (char **)malloc(sizeof(char*) *
 		(ft_strlen_msv(all->env) + ft_strlen_msv(cmd->arg) + 1))))
 		return (-1);
-	while (all->env[i] != NULL)
+	while (all->env[count] != NULL)
 	{
 		if (ft_str_check_uns(all->env[count], cmd->arg) != 1)
 		{
@@ -106,15 +104,21 @@ int				ft_give_export(t_commands *cmd, t_data *all)
 		}
 		count++;
 	}
-	while (cmd->arg[g])
-	{
-		tmp[i] = ft_strdup(cmd->arg[g]);
-		i++;
-		g++;
-	}
-	tmp[i] = NULL;
 	free_msv(all->env);
 	all->env = NULL;
 	all->env = tmp;
+	count = ft_strlen_msv(cmd->arg);
+	count--;
+	while (count != 0)
+	{
+		all->env[i] = NULL;
+		if(ft_str_check_exp(all->env, cmd->arg[count]) != 1)
+		{
+			all->env[i] = ft_strdup(cmd->arg[count]);
+			i++;
+		}
+		count--;
+	}
+	all->env[i] = NULL;
 	return (0);
 }

@@ -6,13 +6,66 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 13:47:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 13:00:27 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 17:03:23 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
+int		ft_str_check_exp(char **env, char *arg)
+{
+	int i;
+	int g;
+
+	i = 0;
+	while(env[i])
+	{
+		g = 0;
+		while(env[i][g] == arg[g])
+		{
+			if(env[i][g] == '=' && arg[g] == '=')
+				return(1);
+			if(env[i][g] == '=' && arg[g] == '\0')
+				return(1);
+			if(env[i][g] == '\0' && arg[g] == '\0')
+				return(1);
+			g++;
+		}
+		i++;
+	}
+	return(0);
+}
+
 int		ft_str_check_uns(char *str, char **arg)
+{
+	int	i;
+	int	g;
+	int	count;
+
+	if (str == NULL)
+		return (1);
+	count = 1;
+	i = ft_strlen_msv(arg);
+	while (i != 1)
+	{
+		g = 0;
+		while (str[g] == arg[count][g])
+		{
+			g++;
+			if (arg[count][g] == '=' && str[g] == '=')
+				return (1);
+			if (arg[count][g] == '\0' && str[g] == '\0')
+				return (1);
+			if (arg[count][g] == '=' && str[g] == '\0')
+				return (1);
+		}
+		count++;
+		i--;
+	}
+	return (0);
+}
+
+static int		ft_str_check_unset(char *str, char **arg)
 {
 	int	i;
 	int	g;
@@ -66,7 +119,7 @@ int		ft_give_unset(t_commands *cmd, t_data *all)
 		return (-1);
 	while (all->env[count] != NULL)
 	{
-		if (ft_str_check_uns(all->env[count], cmd->arg) != 1)
+		if (ft_str_check_unset(all->env[count], cmd->arg) != 1)
 		{
 			tmp[i] = ft_strdup(all->env[count]);
 			i++;
