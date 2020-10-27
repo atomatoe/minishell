@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 13:47:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 17:03:23 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 19:23:04 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,24 @@ int		ft_str_check_exp(char **env, char *arg)
 	int g;
 
 	i = 0;
-	while(env[i])
+	while (env[i])
 	{
 		g = 0;
-		while(env[i][g] == arg[g])
+		while (env[i][g] == arg[g])
 		{
-			if(env[i][g] == '=' && arg[g] == '=')
-				return(1);
-			if(env[i][g] == '=' && arg[g] == '\0')
-				return(1);
-			if(env[i][g] == '\0' && arg[g] == '\0')
-				return(1);
 			g++;
+			if (env[i][g] == '=' && arg[g] == '=')
+				return (1);
+			if (env[i][g] == '=' && arg[g] == '\0')
+				return (1);
+			if (env[i][g] == '\0' && arg[g] == '=')
+				return (2);
+			if (env[i][g] == '\0' && arg[g] == '\0')
+				return (1);
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 int		ft_str_check_uns(char *str, char **arg)

@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 12:58:34 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 18:49:57 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,11 @@ void	ft_init_struct(t_data *all)
 	all->error = ft_strdup("0");
 	all->arg = NULL;
 	all->env = NULL;
-	all->count = 0;
 	all->env_home_dir = 0;
 	all->env_dir_i = 0;
 	all->env_old_dir_i = 0;
 	all->env_path_i = 0;
-	all->last_env = 0;
 	all->file_dir = NULL;
-	all->env_old_dir = NULL;
-	all->env_skip_dir = NULL;
 }
 
 void	ft_parse_env(t_data *all)
@@ -40,7 +36,6 @@ void	ft_parse_env(t_data *all)
 	all->env_home_dir = -1;
 	all->env_old_dir_i = -1;
 	all->env_path_i = -1;
-	all->last_env = -1;
 	while (all->env[i])
 	{
 		if (ft_strncmp(all->env[i], "PWD=", 4) == 0)
@@ -53,7 +48,6 @@ void	ft_parse_env(t_data *all)
 			all->env_path_i = i;
 		i++;
 	}
-	all->last_env = i;
 }
 
 int		ft_creat_env(t_data *all, char **env)

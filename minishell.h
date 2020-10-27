@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 17:31:09 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 18:50:05 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,12 @@ typedef	struct			s_data
 	int					fd0;
 	char				*error;
 	char				**arg;
-	int					count;
 	char				**env;
 	int					env_home_dir;
 	int					env_dir_i;
 	int					env_old_dir_i;
 	int					env_path_i;
-	int					last_env;
 	char				*file_dir;
-	char				*env_old_dir;
-	char				*env_skip_dir;
 }						t_data;
 
 void					wait_str(t_data *all, char **line);

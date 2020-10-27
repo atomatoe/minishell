@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 17:31:12 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 18:48:15 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		do_cmd(t_commands *cmd, t_data *all)
 			dup2(fd[1], 1);
 		}
 		ft_parse_env(all);
-		if (redirects(redir))//дописать вывод ошибок
+		if (redirects(redir))
 		{
 			write(1, "No such file or directory\n", 26);
 			return ;
@@ -47,9 +47,15 @@ void		do_cmd(t_commands *cmd, t_data *all)
 			ft_give_cd(cmd, all);
 		else if (ft_compare_str(cmd->cmd, "exit") == 1)
 		{
-			if(!pip->pipe)
+			if (!pip->pipe)
 			{
 				write(1, "exit\n", 5);
+				if (cmd->arg[1])
+				{
+					ft_putstr("minishell: exit: ");
+					ft_putstr(cmd->arg[1]);
+					ft_putstr(": numeric argument required\n");
+				}
 				exit(ft_atoi(all->error));
 			}
 		}
