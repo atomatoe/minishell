@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 15:01:23 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 15:17:35 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			ft_start(t_commands *next, t_data *all)
 	}
 	if (next && next->invalid && next->next)
 	{
-		write(1, "Command not found\n", 20);
+		write(1, "Command not found\n", 19);
 		free(all->error);
 		all->error = ft_strdup("127");
 	}
