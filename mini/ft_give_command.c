@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 12:56:23 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:34:03 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int			ft_give_command(t_commands *cmd, t_data *all)
 	else if (pid == 0)
 	{
 		execve(cmd->cmd_dir, cmd->arg, all->env);
-		exit(1);
+		exit(ft_atoi(all->error));
 	}
 	else
 		wait(0);

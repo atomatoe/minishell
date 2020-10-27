@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 11:55:11 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:32:15 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		main(int argc, char **argv, char **env)
 	signal(SIGQUIT, ft_signal_quit);
 	while (1)
 	{
-		wait_str(&line);
+		wait_str(all, &line);
 		cmd = create_lst(line, all);
 		free (line);
 		line = NULL;

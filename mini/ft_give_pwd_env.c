@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:19:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 12:10:20 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:36:20 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ void		ft_give_pwd(t_commands *cmd)
 	ft_strlen(cmd->cmd);
 	getcwd(tmp, 1000);
 	ft_putstr(tmp);
+	write(1, "\n", 1);
 }

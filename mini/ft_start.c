@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 13:03:12 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:34:33 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		do_cmd(t_commands *cmd, t_data *all)
 		else if (ft_compare_str(cmd->cmd, "exit") == 1)
 		{
 			write(1, "exit\n", 5);
-			exit(0);
+			exit(ft_atoi(all->error));
 		}
 		else if (cmd->dir_find == 1)
 			ft_give_command(cmd, all);

@@ -6,13 +6,13 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 12:52:55 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/26 13:46:43 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:31:51 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void		wait_str(char **line)
+void		wait_str(t_data *all, char **line)
 {
 	static int	x = 0;
 
@@ -33,6 +33,6 @@ void		wait_str(char **line)
 	if(!get_next_line(line))
 	{
 		write(1, "exit\n", 5);
-		exit(0);
+		exit(ft_atoi(all->error));
 	}
 }

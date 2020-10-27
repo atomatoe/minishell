@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 12:02:43 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 13:32:34 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef	struct			s_data
 }						t_data;
 
 
-void					wait_str(char **line);
+void					wait_str(t_data *all, char **line);
 t_commands				*create_lst(char *line, t_data *all);
 void					add_lst(char *line, t_commands *s_point, size_t pointd, t_data *all);
 char					**line_to_mas(char *line, int *er, t_data *all);
