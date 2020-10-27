@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/11 16:56:06 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 13:32:15 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 14:37:29 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 int		main(int argc, char **argv, char **env)
 {
-	(void)argc;
-	(void)argv;
-
 	char		*line;
 	t_data		*all;
 	t_commands	*cmd;
 
+	(void)argc;
+	(void)argv;
 	all = (t_data *)malloc(sizeof(t_data));
 	ft_init_struct(all);
 	ft_creat_env(all, env);
@@ -30,7 +29,7 @@ int		main(int argc, char **argv, char **env)
 	{
 		wait_str(all, &line);
 		cmd = create_lst(line, all);
-		free (line);
+		free(line);
 		line = NULL;
 		ft_start(cmd, all);
 		// print_lst(cmd);

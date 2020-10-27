@@ -33,6 +33,6 @@ re:		fclean all
 bonus: all
 
 norm: 
-	norminette parser/*.c libft/*.c main.c
+	norminette parser/*.c libft/*.c libft/*.h mini/*.c main.c minishell.h
 
 .PHONY: all clean fclean re bonus norm

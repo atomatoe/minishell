@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:47:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/23 16:32:29 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 13:59:31 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*re_malloc(char c, char *w)
 	while (w[++i])
 		v[i] = w[i];
 	v[i++] = c;
-	free (w);
+	free(w);
 	return (v);
 }
 
@@ -54,7 +54,8 @@ int		if_dollar(char *line, t_data *all, char **w)
 	int		num_var;
 
 	i = 1;
-	while (line[i] == 95 || (line[i] > 64 && line[i] < 91) || (line[i] > 96 && line[i] < 123))
+	while (line[i] == 95 || (line[i] > 64 && line[i] < 91) ||
+						(line[i] > 96 && line[i] < 123))
 		i++;
 	if (i == 1)
 	{
@@ -98,6 +99,7 @@ int		if_double_quotes(char *line, t_data *all, char **w, int *er)
 		*er = 1;
 	return (i);
 }
+
 int		if_single_quotes(char **line, int i, char **w, int *er)
 {
 	while ((*line)[i++] && (*line)[i] != '\'')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/26 20:42:20 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 13:56:01 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,16 @@ size_t		find_end_cmd(char *s)
 	return (i);
 }
 
-void		write_data(t_commands *s_point, size_t *point, char *line, t_data *all)
+void		write_data(t_commands *s_point, size_t *point,
+										char *line, t_data *all)
 {
 	char	*line2;
 	size_t	end_cmd;
 
 	line2 = NULL;
 	init_struct_cmd(s_point);
-
 	*point += skip_space(line + *point);
 	end_cmd = *point + find_end_cmd(line + *point);
-
 	s_point->invalid = 0;
 	s_point->dir_find = 0;
 	line2 = ft_strtosup(line + *point, (end_cmd - *point));
@@ -75,7 +74,7 @@ void		write_data(t_commands *s_point, size_t *point, char *line, t_data *all)
 		(*point)++;
 }
 
-t_commands		*create_lst(char *line, t_data *all)
+t_commands	*create_lst(char *line, t_data *all)
 {
 	size_t		point;
 	t_commands	*cmd;

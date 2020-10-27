@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_cmd->c                                         :+:      :+:    :+:   */
+/*   free_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/17 19:57:55 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/17 20:09:54 by skarry           ###   ########.fr       */
+/*   Created: 2020/10/27 13:51:37 by skarry            #+#    #+#             */
+/*   Updated: 2020/10/27 13:52:00 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_cmd(t_commands *cmd)
 {
-	if(cmd)
+	if (cmd)
 	{
 		if (cmd->redir)
 			free_cmd(cmd->redir);
@@ -28,6 +28,6 @@ void	free_cmd(t_commands *cmd)
 			free(cmd->cmd);
 		if (cmd->cmd_dir)
 			free(cmd->cmd_dir);
-		free (cmd);
+		free(cmd);
 	}
 }

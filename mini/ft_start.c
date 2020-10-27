@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 13:34:33 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 15:01:23 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,13 +61,18 @@ void		do_cmd(t_commands *cmd, t_data *all)
 
 int			ft_start(t_commands *next, t_data *all)
 {
-	while (next)
+	while (next && !next->invalid)
 	{
-		if (!next->invalid)
-			do_cmd(next, all);
+		do_cmd(next, all);
 		next = next->next;
 		dup2(all->fd1, 1);
 		dup2(all->fd0, 0);
+	}
+	if (next && next->invalid && next->next)
+	{
+		write(1, "Command not found\n", 20);
+		free(all->error);
+		all->error = ft_strdup("127");
 	}
 	return (0);
 }

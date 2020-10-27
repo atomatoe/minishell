@@ -1,0 +1,11 @@
+CMakeLists.txt
+Makefile
+cmake-build-debug
+k
+libft
+main.c
+main.o
+mini
+minishell
+minishell.h
+parser

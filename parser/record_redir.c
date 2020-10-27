@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 19:16:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/24 21:11:39 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/27 14:56:38 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		slip_2_mas(char ***dst, char ***src)
 	char	**b;
 	size_t	size;
 
-	if (!(*src) || ft_array_size(*src) == 1)
+	if (!(*src) || ft_array_size(*src) < 2)
 		return ;
 	size = ft_array_size(*dst) + ft_array_size(*src);
 	a = (char **)ft_calloc(sizeof(char *) * size, 1);
@@ -70,6 +70,16 @@ void		record_arg(t_commands *pipe, t_commands *redir)
 	pipe->invalid += redir->invalid;
 }
 
+void		record_valid(t_commands *next)
+{
+	if (next->next && next->next->next)
+	{
+		if (next->next->next && next->next->next->next)
+			record_valid(next->next);
+		next->invalid += next->next->invalid;
+	}
+}
+
 void		record_redir(t_commands *cmd, t_data *all)
 {
 	t_commands	*pipe;
@@ -86,9 +96,10 @@ void		record_redir(t_commands *cmd, t_data *all)
 			redir = pipe->redir;
 			if (redir)
 				record_arg(pipe, redir);
-			next->invalid += pipe->invalid;
 			pipe = pipe->pipe;
 		}
 		next = next->next;
 	}
+	next = cmd;
+	record_valid(next);
 }

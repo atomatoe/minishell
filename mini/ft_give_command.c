@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 13:34:03 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/27 14:01:39 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,11 @@ int			redirects(t_commands *redir)
 		else
 		{
 			if (redir->type_redir == 2 && !redir->redir->invalid)
-				fd = open(redir->redir->cmd, O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
+				fd = open(redir->redir->cmd, O_CREAT |
+							O_RDWR | O_TRUNC, S_IRWXU);
 			if (redir->type_redir == 3 && !redir->redir->invalid)
-				fd = open(redir->redir->cmd, O_CREAT | O_RDWR | O_APPEND, S_IRWXU);
+				fd = open(redir->redir->cmd, O_CREAT |
+							O_RDWR | O_APPEND, S_IRWXU);
 		}
 		dup2(fd, (redir->type_redir == 1) ? 0 : 1);
 		redir = redir->redir;
