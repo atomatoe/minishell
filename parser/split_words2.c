@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:47:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 12:37:35 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 19:48:39 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int		if_double_quotes(char *line, t_data *all, char **w, int *er)
 		i++;
 	else
 		*er = 1;
+	if (line[i] == ' ')
+		*w = ft_strdup("");
 	return (i);
 }
 
@@ -85,6 +87,8 @@ int		if_single_quotes(char **line, int i, char **w, int *er)
 		i++;
 	else
 		*er = 1;
+	if ((*line)[i] == ' ')
+		*w = ft_strdup("");
 	return (i);
 }
 
