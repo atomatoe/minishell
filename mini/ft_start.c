@@ -3,14 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 18:48:15 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 12:57:37 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static void	ft_not_found(t_commands *cmd, t_data *all)
+{
+	ft_putstr(cmd->cmd);
+	write(1, ": command not found\n", 20);
+	free(all->error);
+	all->error = ft_strdup("127");
+}
+
+static void	all_cmd(t_commands *cmd, t_data *all,
+						t_commands *redir, t_commands *pip)
+{
+	ft_parse_env(all);
+	if (redirects(redir))
+	{
+		write(1, "No such file or directory\n", 26);
+		return ;
+	}
+	if (ft_compare_str(cmd->cmd, "pwd") == 1)
+		ft_give_pwd(cmd);
+	else if (ft_compare_str(cmd->cmd, "env") == 1)
+		ft_give_env(all);
+	else if (ft_compare_str(cmd->cmd, "echo") == 1)
+		ft_give_echo(all, cmd);
+	else if (ft_compare_str(cmd->cmd, "export") == 1)
+		ft_give_export(cmd, all);
+	else if (ft_compare_str(cmd->cmd, "unset") == 1)
+		ft_give_unset(cmd, all);
+	else if (ft_compare_str(cmd->cmd, "cd") == 1)
+		ft_give_cd(cmd, all);
+	else if (ft_compare_str(cmd->cmd, "exit") == 1)
+		ft_exit(cmd, all, pip);
+	else if (cmd->dir_find == 1)
+		ft_give_command(cmd, all);
+	else
+		ft_not_found(cmd, all);
+}
 
 void		do_cmd(t_commands *cmd, t_data *all)
 {
@@ -27,47 +64,7 @@ void		do_cmd(t_commands *cmd, t_data *all)
 			pipe(fd);
 			dup2(fd[1], 1);
 		}
-		ft_parse_env(all);
-		if (redirects(redir))
-		{
-			write(1, "No such file or directory\n", 26);
-			return ;
-		}
-		if (ft_compare_str(cmd->cmd, "pwd") == 1)
-			ft_give_pwd(cmd);
-		else if (ft_compare_str(cmd->cmd, "env") == 1)
-			ft_give_env(all);
-		else if (ft_compare_str(cmd->cmd, "echo") == 1)
-			ft_give_echo(all, cmd);
-		else if (ft_compare_str(cmd->cmd, "export") == 1)
-			ft_give_export(cmd, all);
-		else if (ft_compare_str(cmd->cmd, "unset") == 1)
-			ft_give_unset(cmd, all);
-		else if (ft_compare_str(cmd->cmd, "cd") == 1)
-			ft_give_cd(cmd, all);
-		else if (ft_compare_str(cmd->cmd, "exit") == 1)
-		{
-			if (!pip->pipe)
-			{
-				write(1, "exit\n", 5);
-				if (cmd->arg[1])
-				{
-					ft_putstr("minishell: exit: ");
-					ft_putstr(cmd->arg[1]);
-					ft_putstr(": numeric argument required\n");
-				}
-				exit(ft_atoi(all->error));
-			}
-		}
-		else if (cmd->dir_find == 1)
-			ft_give_command(cmd, all);
-		else
-		{
-			ft_putstr(cmd->cmd);
-			write(1, ": command not found\n", 20);
-			free(all->error);
-			all->error = ft_strdup("127");
-		}
+		all_cmd(cmd, all, redir, pip);
 		pipe_end(pip, all, fd[0], fd[1]);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 12:41:36 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 12:52:57 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,6 @@ size_t					find_end_cmd(char *s);
 void					record_mas_to_mas(char ***m1, char **m2, int start);
 int						if_basesim(char *line, int i, t_data *all, char **w);
 int						if_dollar(char *line, t_data *all, char **w);
+void					ft_exit(t_commands *cmd, t_data *all, t_commands *pip);
 
 #endif
