@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 13:53:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 16:55:17 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 18:39:38 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ int		base_path(t_data *all, char *command, t_commands *lst)
 	char	**tmp;
 
 	g = 0;
-	i = 0;
+	i = -1;
 	if (all->env_path_i == -1)
 		return (0);
 	tmp = ft_split(all->env[all->env_path_i] + 5, ':');
-	while (tmp[i])
+	while (tmp[++i])
 	{
 		tmp[i] = re_malloc('/', tmp[i]);
 		j = -1;
@@ -66,7 +66,6 @@ int		base_path(t_data *all, char *command, t_commands *lst)
 			free_msv(tmp);
 			return (1);
 		}
-		i++;
 	}
 	free_msv(tmp);
 	return (0);

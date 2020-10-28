@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wait_str.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 12:52:55 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 18:35:19 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 18:42:37 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		wait_str(t_data *all, char **line)
 			ft_putstr("  \b\b");
 			flag = 1;
 			write(1, "\0", 1);
-			if(!**line)
+			if (!**line)
 			{
 				write(1, "exit\n", 5);
 				exit(ft_atoi(all->error));

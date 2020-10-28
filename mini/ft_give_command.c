@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 18:34:46 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 18:38:41 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		pipe_end(t_commands *pip, t_data *all, int fd0, int fd1)
 int			ft_give_command(t_commands *cmd, t_data *all)
 {
 	pid_t	pid;
-	int status;
+	int		status;
 
 	status = 0;
 	pid = fork();
@@ -71,7 +71,6 @@ int			ft_give_command(t_commands *cmd, t_data *all)
 		status = WEXITSTATUS(pid);
 		free(all->error);
 		all->error = ft_strdup(ft_itoa(status));
-		//ft_exitcode(status);
 	}
 	return (0);
 }
