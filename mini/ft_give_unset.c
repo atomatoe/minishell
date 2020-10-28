@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 13:47:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 14:17:38 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 18:51:30 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int				ft_str_check_exp(char **env, char *arg)
 		{
 			g++;
 			if (env[i][g] == '=' && arg[g] == '=')
-				return (1);
+				return (2);
 			if (env[i][g] == '=' && arg[g] == '\0')
 				return (1);
 			if (env[i][g] == '\0' && arg[g] == '=')
