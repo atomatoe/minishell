@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 13:53:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 15:43:38 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 16:55:17 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int		base_path(t_data *all, char *command, t_commands *lst)
 
 	g = 0;
 	i = 0;
+	if (all->env_path_i == -1)
+		return (0);
 	tmp = ft_split(all->env[all->env_path_i] + 5, ':');
 	while (tmp[i])
 	{
