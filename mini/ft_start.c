@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 15:03:25 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 17:06:04 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,20 @@ static void	ft_not_found(t_commands *cmd, t_data *all)
 	all->error = ft_strdup("127");
 }
 
+static void	ft_errorfile(t_data *all)
+{
+	write(1, "No such file or directory\n", 26);
+	free(all->error);
+	all->error = ft_strdup("127");
+}
+
 static void	all_cmd(t_commands *cmd, t_data *all,
 						t_commands *redir, t_commands *pip)
 {
 	ft_parse_env(all);
 	if (redirects(redir))
 	{
-		write(1, "No such file or directory\n", 26);
+		ft_errorfile(all);
 		return ;
 	}
 	if (ft_compare_str(cmd->cmd, "pwd") == 1)
