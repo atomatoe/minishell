@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 09:46:31 by skarry            #+#    #+#             */
-/*   Updated: 2020/05/15 23:26:43 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 15:13:21 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*str_constructor(int len, int ren, int negativ)
 	char	*str;
 
 	if (!((str = (char*)malloc(sizeof(char) * (len + 1)))))
-		return (NULL);
+		ft_malloc_error();
 	str[len--] = '\0';
 	while (ren != 0)
 	{

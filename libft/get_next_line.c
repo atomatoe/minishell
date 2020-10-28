@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 15:29:10 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 14:49:41 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:14:16 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char		*add_char_to_str(char *str, char c, int *size)
 
 	i = 0;
 	if (!(res = (char *)malloc(sizeof(char) * (*size) + 1)))
-		return (NULL);
+		ft_malloc_error();
 	while (str && i < (*size))
 	{
 		res[i] = str[i];
@@ -34,7 +34,8 @@ static char		*add_char_to_str(char *str, char c, int *size)
 
 static int		ft_bytesnull(char ***line)
 {
-	**line = (char *)malloc(1);
+	if (!(**line = (char *)malloc(1)))
+		ft_malloc_error();
 	**line[0] = '\0';
 	return(0);
 }

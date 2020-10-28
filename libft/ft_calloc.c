@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 15:57:22 by skarry            #+#    #+#             */
-/*   Updated: 2020/05/07 20:22:21 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 15:10:35 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t n, size_t b)
 	unsigned char	*s;
 
 	if (!(s = (unsigned char*)malloc(n * b)))
-		return (NULL);
+		ft_malloc_error();
 	ft_memset(s, 0, n * b);
 	return (s);
 }

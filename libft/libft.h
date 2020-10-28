@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:59:52 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/26 13:46:53 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:16:38 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ t_list				*ft_lstnew(void *content);
 char				*ft_strtosup(char const *s, size_t len);
 int					get_next_line(char **line);
 size_t				ft_array_size(char **ar);
-void				*free_str(char ***str);
+void				free_str(char **str);
+void				ft_malloc_error(void);
 
 #endif

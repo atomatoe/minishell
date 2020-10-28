@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/09 21:37:52 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 13:06:36 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:16:53 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			*free_str(char ***str)
+void			free_str(char **str)
 {
 	int i;
 
 	i = 0;
-	while ((*str)[i])
+	while (str[i])
 	{
-		free((*str)[i]);
+		free(str[i]);
 		i++;
 	}
-	free((*str)[i]);
-	free((*str));
-	return (NULL);
+	free(str[i]);
+	free(str);
+	ft_malloc_error();
 }
 
 static int		count_sym(char const *s, char c)
@@ -69,7 +69,7 @@ char			**ft_split(char const *s, char c)
 	int		j;
 
 	if (!s || !(str = (char**)malloc(sizeof(char*) * (count_words(s, c) + 1))))
-		return (NULL);
+		ft_malloc_error();
 	i = 0;
 	j = 0;
 	while (*s)
@@ -79,7 +79,7 @@ char			**ft_split(char const *s, char c)
 		if (*s)
 		{
 			if (!(str[j] = (char*)malloc(sizeof(char) * (count_sym(s, c) + 1))))
-				return (free_str(&str));
+				free_str(str);
 			while (*s != c && *s)
 				str[j][i++] = *s++;
 			str[j++][i] = '\0';
