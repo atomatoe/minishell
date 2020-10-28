@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_give_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 18:38:41 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 19:11:38 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int			ft_give_command(t_commands *cmd, t_data *all)
 		wait(&pid);
 		status = WEXITSTATUS(pid);
 		free(all->error);
-		all->error = ft_strdup(ft_itoa(status));
+		all->error = ft_itoa(status);
 	}
 	return (0);
 }
