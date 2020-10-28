@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:29:34 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 13:04:27 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:47:00 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**ft_strdup_msv(char **str)
 	while (str[count])
 		count++;
 	if (!(tmp = (char **)malloc(sizeof(char*) * (count + 1))))
-		return (NULL);
+		ft_malloc_error();
 	count = 0;
 	while (str[count])
 	{

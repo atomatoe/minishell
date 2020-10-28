@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_words1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 12:45:58 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/26 20:43:48 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 13:51:18 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char		**line_to_mas(char *line, int *er, t_data *all)
 	point_list = line_to_lst(line, er, all);
 	size = ft_lstsize(point_list);
 	if (!(map = (char**)ft_calloc(sizeof(char*) * (size + 1), 1)))
-		return (0);
+		ft_malloc_error();
 	map[size] = NULL;
 	i = 0;
 	while (size != i)

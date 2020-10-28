@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 15:29:10 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 13:22:05 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 14:49:41 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ static char		*add_char_to_str(char *str, char c, int *size)
 	res[*size] = c;
 	*size += 1;
 	return (res);
+}
+
+static int		ft_bytesnull(char ***line)
+{
+	**line = (char *)malloc(1);
+	**line[0] = '\0';
+	return(0);
+}
+
+static int		ft_bytenull(char **tmp, char ***line, int *size)
+{
+	*tmp = add_char_to_str(*tmp, '\0', &*size);
+	**line = *tmp;
+	return (0);
 }
 
 int				get_next_line(char **line)
@@ -62,17 +76,9 @@ int				get_next_line(char **line)
 	else if (bytes == 0)
 	{
 		if (!tmp)
-		{
-			*line = (char *)malloc(1);
-			*line[0] = '\0';
-			return (0);
-		}
+			return(ft_bytesnull(&line));
 		else
-		{
-			tmp = add_char_to_str(tmp, '\0', &size);
-			*line = tmp;
-			return (0);
-		}
+			return(ft_bytenull(&tmp, &line, &size));
 	}
 	return (-1);
 }

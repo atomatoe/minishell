@@ -6,11 +6,37 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 18:41:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 12:58:10 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 14:08:42 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+void			ft_give_exportss(t_commands *cmd, t_data *all, int i)
+{
+	int count;
+	int len;
+
+	count = ft_strlen_msv(cmd->arg);
+	len = 1;
+	while (len != count)
+	{
+		all->env[i] = NULL;
+		if (ft_str_check_exp(all->env, cmd->arg[len]) != 1)
+		{
+			if (ft_str_check_exp(all->env, cmd->arg[len]) == 2)
+			{
+				i--;
+				free(all->env[i]);
+				all->env[i] = NULL;
+			}
+			all->env[i] = ft_strdup(cmd->arg[len]);
+			i++;
+		}
+		len++;
+	}
+	all->env[i] = NULL;
+}
 
 static void		ft_env_update(t_data *all, char *old_pwd)
 {
@@ -33,7 +59,7 @@ static char		*ft_env_replace_home(t_data *all)
 	i = 5;
 	if (!(tmp = (char *)malloc(sizeof(char) *
 		(ft_strlen(all->env[all->env_home_dir]) + 1))))
-		return (NULL);
+		ft_malloc_error();
 	while (all->env[all->env_home_dir][i] != '\0')
 	{
 		tmp[j] = all->env[all->env_home_dir][i];

@@ -6,11 +6,27 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/27 18:49:57 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 13:54:17 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+int		ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0' && s2[i] != '\0')
+	{
+		if (s1[i] > s2[i])
+			return (1);
+		if (s1[i] < s2[i])
+			return (-1);
+		i++;
+	}
+	return (0);
+}
 
 void	ft_init_struct(t_data *all)
 {
@@ -60,7 +76,7 @@ int		ft_creat_env(t_data *all, char **env)
 	while (env[i])
 		i++;
 	if (!(all->env = (char **)malloc(sizeof(char*) * (i + 1))))
-		return (-1);
+		ft_malloc_error();
 	while (j != i)
 	{
 		all->env[j] = ft_strdup(env[j]);

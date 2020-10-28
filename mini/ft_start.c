@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:13:10 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 12:57:37 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 13:55:10 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,10 @@ int			ft_start(t_commands *next, t_data *all)
 		all->error = ft_strdup("127");
 	}
 	return (0);
+}
+
+void		ft_malloc_error(void)
+{
+	ft_putstr("malloc error!\n");
+	exit(1);
 }
