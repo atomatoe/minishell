@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 17:32:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 13:37:46 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 18:34:46 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,9 @@ void		pipe_end(t_commands *pip, t_data *all, int fd0, int fd1)
 int			ft_give_command(t_commands *cmd, t_data *all)
 {
 	pid_t	pid;
+	int status;
 
+	status = 0;
 	pid = fork();
 	if (pid < 0)
 		perror(NULL);
@@ -64,6 +66,12 @@ int			ft_give_command(t_commands *cmd, t_data *all)
 		exit(ft_atoi(all->error));
 	}
 	else
-		wait(0);
+	{
+		wait(&pid);
+		status = WEXITSTATUS(pid);
+		free(all->error);
+		all->error = ft_strdup(ft_itoa(status));
+		//ft_exitcode(status);
+	}
 	return (0);
 }
