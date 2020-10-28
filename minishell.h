@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 18:50:05 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 12:41:36 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,9 @@ void					pipe_end(t_commands *pip, t_data *all,
 						int fd0, int fd1);
 int						redirects(t_commands *redir);
 int						ft_str_check_exp(char **env, char *arg);
+size_t					find_end_cmd(char *s);
+void					record_mas_to_mas(char ***m1, char **m2, int start);
+int						if_basesim(char *line, int i, t_data *all, char **w);
+int						if_dollar(char *line, t_data *all, char **w);
 
 #endif

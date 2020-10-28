@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 16:31:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 17:00:58 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 11:59:45 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,40 +32,14 @@ size_t		skip_space(char *s)
 	return (i);
 }
 
-size_t		find_end_cmd(char *s)
+void		give_type_direct(char *line, t_commands *s_point, size_t end_cmd)
 {
-	size_t		i;
-
-	i = 0;
-	while (s[i] != '|' && s[i] != ';' && s[i] != '<' && s[i] != '>' && s[i])
-	{
-		if (s[i] == '\\')
-			i++;
-		if (s[i] == '\'')
-		{
-			i++;
-			while (s[i] && s[i] != '\'')
-				i++;
-			if (!s[i])
-				return (i);
-		}
-		if (s[i] == '\"')
-		{
-			i++;
-			while (s[i] && s[i] != '\"')
-			{
-				if (s[i] == '\\')
-					i++;
-				if (s[i])
-					i++;
-			}
-			if (!s[i])
-				return (i);
-		}
-		if (s[i])
-			i++;
-	}
-	return (i);
+	if (line[end_cmd] == '<')
+		s_point->type_redir = 1;
+	if (line[end_cmd] == '>')
+		s_point->type_redir = 2;
+	if (line[end_cmd] == '>' && line[end_cmd + 1] == '>')
+		s_point->type_redir = 3;
 }
 
 void		write_data(t_commands *s_point, size_t *point,
@@ -89,12 +63,7 @@ void		write_data(t_commands *s_point, size_t *point,
 		s_point->cmd = ft_strdup(s_point->arg[0]);
 	*point += skip_space(line + *point);
 	s_point->type_redir = 0;
-	if (line[end_cmd] == '<')
-		s_point->type_redir = 1;
-	if (line[end_cmd] == '>')
-		s_point->type_redir = 2;
-	if (line[end_cmd] == '>' && line[end_cmd + 1] == '>')
-		s_point->type_redir = 3;
+	give_type_direct(line, s_point, end_cmd);
 	*point = end_cmd + 1;
 	if (s_point->type_redir == 3)
 		(*point)++;

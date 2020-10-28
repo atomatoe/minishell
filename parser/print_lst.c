@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 14:58:19 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/26 18:04:00 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 11:27:02 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_lst(t_commands *cmd)
 {
 	int	i = 0;
 
-	if(cmd)
+	if (cmd)
 	{
 		if (cmd->arg)
 		{

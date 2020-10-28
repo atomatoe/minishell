@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 13:53:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 13:57:52 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 11:54:48 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		if_full_path(t_commands *lst, char *command)
 	return (0);
 }
 
-int		ft_give_directory(t_data *all, char *command, t_commands *lst)
+int		base_path(t_data *all, char *command, t_commands *lst)
 {
 	int		i;
 	int		j;
@@ -49,18 +49,13 @@ int		ft_give_directory(t_data *all, char *command, t_commands *lst)
 
 	g = 0;
 	i = 0;
-	if (!command || !all->env || !all->env[all->env_path_i])
-		return (0);
 	tmp = ft_split(all->env[all->env_path_i] + 5, ':');
 	while (tmp[i])
 	{
 		tmp[i] = re_malloc('/', tmp[i]);
-		j = 0;
-		while (command[j])
-		{
+		j = -1;
+		while (command[++j])
 			tmp[i] = re_malloc(command[j], tmp[i]);
-			j++;
-		}
 		if (access(tmp[i], F_OK) == 0)
 		{
 			lst->cmd_dir = ft_strdup(tmp[i]);
@@ -70,6 +65,15 @@ int		ft_give_directory(t_data *all, char *command, t_commands *lst)
 		i++;
 	}
 	free_msv(tmp);
+	return (0);
+}
+
+int		ft_give_directory(t_data *all, char *command, t_commands *lst)
+{
+	if (!command || !all->env || !all->env[all->env_path_i])
+		return (0);
+	if (base_path(all, command, lst))
+		return (1);
 	if (if_full_path(lst, command))
 		return (1);
 	if (if_local_path(lst, command, all->env[all->env_dir_i]))

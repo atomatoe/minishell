@@ -6,13 +6,14 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/16 18:38:41 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/24 20:50:47 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 11:46:14 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_commands	*create_one_lst(t_commands *lst, int t)
+t_commands	*create_one_lst(t_commands *lst, int t,
+							t_commands **redir, t_commands **pipe)
 {
 	t_commands	*new;
 
@@ -20,9 +21,13 @@ t_commands	*create_one_lst(t_commands *lst, int t)
 	if (t == 1)
 		lst->redir = new;
 	if (t == 2)
+	{
 		lst->pipe = new;
+		(*pipe) = new;
+	}
 	if (t == 3)
 		lst->next = new;
+	*redir = new;
 	return (new);
 }
 
@@ -41,20 +46,12 @@ void		add_lst(char *line, t_commands *cmd, size_t point, t_data *all)
 	{
 		new = NULL;
 		if (line[point - 1] == '>' || line[point - 1] == '<')
-		{
-			new = create_one_lst(redir, 1);
-			redir = new;
-		}
+			new = create_one_lst(redir, 1, &redir, &pipe);
 		if (line[point - 1] == '|')
-		{
-			new = create_one_lst(pipe, 2);
-			redir = new;
-			pipe = new;
-		}
+			new = create_one_lst(pipe, 2, &redir, &pipe);
 		if (line[point - 1] == ';')
 		{
-			new = create_one_lst(next, 3);
-			redir = new;
+			new = create_one_lst(next, 3, &redir, &pipe);
 			next = new;
 			pipe = new;
 		}

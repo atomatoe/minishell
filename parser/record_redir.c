@@ -6,32 +6,11 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 19:16:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 16:37:32 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 12:17:46 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-void		record_mas_to_mas(char ***m1, char **m2, int start)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	while (m2[i])
-	{
-		(*m1)[start] = (char *)ft_calloc(ft_strlen(m2[i]) + 1, 1);
-		j = 0;
-		while (m2[i][j])
-		{
-			(*m1)[start][j] = m2[i][j];
-			j++;
-		}
-		(*m1)[start][j] = '\0';
-		start++;
-		i++;
-	}
-}
 
 void		slip_2_mas(char ***dst, char ***src)
 {

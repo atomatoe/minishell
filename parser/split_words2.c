@@ -6,32 +6,11 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/17 15:47:44 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/27 13:59:31 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 12:37:35 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
-
-char	*re_malloc(char c, char *w)
-{
-	char	*v;
-	int		i;
-
-	if (!w)
-	{
-		v = (char *)ft_calloc(2, 1);
-		v[0] = c;
-		v[1] = '\0';
-		return (v);
-	}
-	v = (char *)ft_calloc(ft_strlen(w) + 2, 1);
-	i = -1;
-	while (w[++i])
-		v[i] = w[i];
-	v[i++] = c;
-	free(w);
-	return (v);
-}
 
 int		if_backslash(char **line, int *i, char **w, int *er)
 {
@@ -66,11 +45,9 @@ int		if_dollar(char *line, t_data *all, char **w)
 	if ((num_var = give_variable(all->env, var)) > -1)
 	{
 		j = ft_strlen(var) + 1;
-		while (all->env[num_var][j])
-		{
+		j--;
+		while (all->env[num_var][++j])
 			*w = re_malloc(all->env[num_var][j], *w);
-			j++;
-		}
 	}
 	free(var);
 	return (i);
@@ -116,7 +93,6 @@ char	*get_word(char **line, int *er, t_data *all)
 	char	*w;
 	int		i;
 
-	i = 0;
 	w = NULL;
 	i = skip_space((*line));
 	while (((*line)[i] != ' ' && (*line)[i]) || (!w && (*line)[i]))
@@ -131,22 +107,11 @@ char	*get_word(char **line, int *er, t_data *all)
 		if ((*line)[i] == '\'')
 			i = if_single_quotes(line, i, &w, er);
 		if ((*line)[i] == '\"')
-		{
 			i += if_double_quotes((*line) + i, all, &w, er);
-			if (*er == 1)
-				break ;
-		}
-		while ((*line)[i] && (*line)[i] != ' ' && (*line)[i] != '\\'
-				&& (*line)[i] != '\'' && (*line)[i] != '\"')
-		{
-			if ((*line)[i] == '$')
-				i += if_dollar((*line) + i, all, &w);
-			else
-			{
-				w = re_malloc((*line)[i], w);
-				i++;
-			}
-		}
+		if (*er == 1)
+			break ;
+		else
+			i = if_basesim((*line), i, all, &w);
 	}
 	*line = *line + i;
 	return (w);
