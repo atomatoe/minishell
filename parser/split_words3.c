@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   split_words3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 12:20:43 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 19:56:42 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 20:02:11 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int			if_basesim(char *line, int i, t_data *all, char **w)
 	return (i);
 }
 
-int	ft_find_equally(char *str, char *str2)
+int			ft_find_equally(char *str, char *str2)
 {
 	int i;
 
