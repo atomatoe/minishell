@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 13:53:38 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 16:43:06 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ft_signal(int sig)
 	if (sig == SIGINT)
 	{
 		flag = 1;
+		ft_putstr_fd("\b\b  \b\b", 1);
 		if (pid)
 		{
 			ft_putstr_fd("\n", 1);
@@ -82,4 +83,6 @@ void	ft_signal_quit(int sig)
 	pid = waitpid(-1, &flag, WNOHANG);
 	if (!pid)
 		ft_putendl_fd("Quit: 3", 1);
+	else
+		ft_putstr_fd("\b\b  \b\b", 1);
 }
