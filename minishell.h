@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 14:07:25 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/28 19:55:49 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ int						if_dollar(char *line, t_data *all, char **w);
 void					ft_exit(t_commands *cmd, t_data *all, t_commands *pip);
 void					ft_malloc_error(void);
 void					ft_give_exportss(t_commands *cmd, t_data *all, int i);
+int						ft_find_equally(char *str, char *str2);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
+/*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/23 13:07:41 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 12:38:02 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 19:55:55 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			give_variable(char **env, char *var)
 	i = 0;
 	while (env[i])
 	{
-		if (ft_strncmp(env[i], var, ft_strlen(var)) == 0)
+		if (ft_find_equally(env[i], var) == 0)
 			return (i);
 		i++;
 	}
