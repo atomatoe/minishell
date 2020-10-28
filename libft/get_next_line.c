@@ -6,7 +6,7 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/24 15:29:10 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 15:14:16 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 15:55:30 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		ft_bytesnull(char ***line)
 	if (!(**line = (char *)malloc(1)))
 		ft_malloc_error();
 	**line[0] = '\0';
-	return(0);
+	return (0);
 }
 
 static int		ft_bytenull(char **tmp, char ***line, int *size)
@@ -47,27 +47,33 @@ static int		ft_bytenull(char **tmp, char ***line, int *size)
 	return (0);
 }
 
+static int		base_cycle(char **line, char **tmp, char *buffer, int *size)
+{
+	if (buffer[0] == '\n')
+	{
+		if (!(*tmp = add_char_to_str(*tmp, '\0', size)))
+			return (-1);
+		*line = *tmp;
+		return (1);
+	}
+	if (!(*tmp = add_char_to_str(*tmp, buffer[0], size)))
+		return (-1);
+	return (0);
+}
+
 int				get_next_line(char **line)
 {
 	char	buffer[1];
 	int		bytes;
 	int		size;
 	char	*tmp;
+	int		i;
 
 	size = 0;
 	tmp = NULL;
 	while ((bytes = read(0, buffer, 1)) > 0)
-	{
-		if (buffer[0] == '\n')
-		{
-			if (!(tmp = add_char_to_str(tmp, '\0', &size)))
-				return (-1);
-			*line = tmp;
-			return (1);
-		}
-		if (!(tmp = add_char_to_str(tmp, buffer[0], &size)))
-			return (-1);
-	}
+		if ((i = base_cycle(line, &tmp, buffer, &size)) != 0)
+			return (i);
 	if (bytes == -1)
 	{
 		if (tmp)
@@ -77,9 +83,9 @@ int				get_next_line(char **line)
 	else if (bytes == 0)
 	{
 		if (!tmp)
-			return(ft_bytesnull(&line));
+			return (ft_bytesnull(&line));
 		else
-			return(ft_bytenull(&tmp, &line, &size));
+			return (ft_bytenull(&tmp, &line, &size));
 	}
 	return (-1);
 }

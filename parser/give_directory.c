@@ -6,16 +6,18 @@
 /*   By: skarry <skarry@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/27 13:53:21 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 11:54:48 by skarry           ###   ########.fr       */
+/*   Updated: 2020/10/28 15:43:38 by skarry           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int		if_local_path(t_commands *lst, char *command, char *pwd)
+int		if_local_path(t_commands *lst, char *command)
 {
 	char	*tmp;
+	char	pwd[1000];
 
+	getcwd(pwd, 1000);
 	tmp = ft_strjoin(pwd + 4, command);
 	if (access(tmp, F_OK) == 0)
 	{
@@ -76,7 +78,7 @@ int		ft_give_directory(t_data *all, char *command, t_commands *lst)
 		return (1);
 	if (if_full_path(lst, command))
 		return (1);
-	if (if_local_path(lst, command, all->env[all->env_dir_i]))
+	if (if_local_path(lst, command))
 		return (1);
 	return (0);
 }
