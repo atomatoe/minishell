@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 12:09:28 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 13:44:55 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 17:52:50 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void		ft_printf_ec(t_data *all, t_commands *cmd, int i)
 	write(1, "\n", 1);
 	free(all->error);
 	all->error = ft_strdup("0");
+	g_status51 = 0;
 }
 
 static void		ft_print(t_data *all, t_commands *cmd, int i)
@@ -48,6 +49,7 @@ static void		ft_print(t_data *all, t_commands *cmd, int i)
 	}
 	free(all->error);
 	all->error = ft_strdup("0");
+	g_status51 = 0;
 }
 
 int				ft_give_echo(t_data *all, t_commands *cmd)
@@ -55,6 +57,11 @@ int				ft_give_echo(t_data *all, t_commands *cmd)
 	int	i;
 
 	i = 1;
+	if(g_status51 == 1)
+	{
+		free(all->error);
+		all->error = ft_strdup("1");
+	}
 	if (cmd->arg[i] != NULL)
 	{
 		if (ft_compare_str(cmd->arg[i], "-n") == 1)

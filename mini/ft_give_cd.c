@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 18:41:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 18:51:17 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 17:18:11 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,21 @@ void			ft_give_exportss(t_commands *cmd, t_data *all, int i)
 	all->env[i] = NULL;
 }
 
-static void		ft_env_update(t_data *all, char *old_pwd)
+static int		ft_env_update(t_data *all, char *old_pwd)
 {
 	char	tmp[1000];
 
+	if(all->env_old_dir_i == -1 || all->env_dir_i == -1)
+		return(0);
 	free(all->env[all->env_old_dir_i]);
 	all->env[all->env_old_dir_i] = ft_strjoin("OLDPWD=", old_pwd);
 	getcwd(tmp, 1000);
 	free(all->env[all->env_dir_i]);
 	all->env[all->env_dir_i] = ft_strjoin("PWD=", tmp);
+	return(0);
 }
 
-static char		*ft_env_replace_home(t_data *all)
+static char		*ft_env_replace_home(t_commands *cmd, t_data *all)
 {
 	char	*tmp;
 	int		i;
@@ -57,6 +60,13 @@ static char		*ft_env_replace_home(t_data *all)
 
 	j = 0;
 	i = 5;
+	if(all->env_home_dir == -1 && cmd->arg[1] == NULL)
+	{
+		free(all->error);
+		all->error = ft_strdup("1");
+		ft_putstr("minishell: cd: HOME not set\n");
+		return(NULL);
+	}
 	if (!(tmp = (char *)malloc(sizeof(char) *
 		(ft_strlen(all->env[all->env_home_dir]) + 1))))
 		ft_malloc_error();
@@ -77,10 +87,19 @@ int				ft_give_cd(t_commands *cmd, t_data *all)
 
 	getcwd(res, 1000);
 	if (cmd->arg[1])
-		chdir(cmd->arg[1]);
+	{
+		if(chdir(cmd->arg[1]) == -1)
+		{
+			free(all->error);
+			all->error = ft_strdup("1");
+			ft_putstr("minishell: cd: ");
+			ft_putstr(cmd->arg[1]);
+			ft_putstr(": No such file or directory\n");
+		}
+	}
 	else
 	{
-		tmp = ft_env_replace_home(all);
+		tmp = ft_env_replace_home(cmd, all);
 		chdir(tmp);
 		free(tmp);
 	}

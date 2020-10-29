@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 16:43:06 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 17:47:31 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_putstr(char *str)
 int		ft_supercheck_arg(char **arg)
 {
 	int	i;
+	int g;
 
 	i = 1;
 	if (arg[i] == NULL)
@@ -48,6 +49,15 @@ int		ft_supercheck_arg(char **arg)
 	{
 		if (arg[i][0] != '_' && (ft_isalpha(arg[i][0]) != 1))
 			return (i);
+		g = 1;
+		while (arg[i][g] != '\0')
+		{
+			if (ft_isalpha(arg[i][g]) != 1 && arg[i][g]
+				!= '_' && ft_isdigit(arg[i][g]) != 1
+				&& arg[i][g] != '=' && arg[i][g] != '/')
+				return (i);
+			g++;
+		}
 		i++;
 	}
 	return (0);
@@ -58,6 +68,7 @@ void	ft_signal(int sig)
 	int	pid;
 	int	flag;
 
+	g_status51 = 1;
 	pid = waitpid(-1, &flag, WNOHANG);
 	if (sig == SIGINT)
 	{

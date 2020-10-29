@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/28 19:55:49 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 17:48:41 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define _CYN_	"\x1B[36m"
 # define _WHT_	"\x1B[37m"
 # define BOLD	"\033[1m"
+
+int g_status51;
 
 typedef	struct			s_commands
 {

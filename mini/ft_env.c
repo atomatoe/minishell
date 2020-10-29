@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/28 13:54:17 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 17:48:50 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_init_struct(t_data *all)
 	all->env_old_dir_i = 0;
 	all->env_path_i = 0;
 	all->file_dir = NULL;
+	g_status51 = 0;
 }
 
 void	ft_parse_env(t_data *all)
