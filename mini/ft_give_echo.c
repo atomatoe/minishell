@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/22 12:09:28 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/29 17:52:50 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 18:08:56 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int				ft_give_echo(t_data *all, t_commands *cmd)
 	int	i;
 
 	i = 1;
-	if(g_status51 == 1)
+	if (g_status51 == 1)
 	{
 		free(all->error);
 		all->error = ft_strdup("1");

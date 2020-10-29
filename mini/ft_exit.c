@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 12:50:42 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/29 17:57:27 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 18:10:09 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static int	ft_check_str(char *str)
 	int i;
 
 	i = 0;
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
-		if(ft_isdigit(str[i]) != 1)
+		if (ft_isdigit(str[i]) != 1)
 			return (0);
 		i++;
 	}
