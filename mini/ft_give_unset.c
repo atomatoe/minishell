@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 13:47:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/29 16:44:44 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 19:22:15 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,15 @@ int				ft_give_unset(t_commands *cmd, t_data *all)
 
 	i = 0;
 	if ((i = ft_supercheck_arg(cmd->arg)) != 0)
+	{
+		write(1, "minishell: unset: `", 19);
+		ft_putstr(cmd->arg[i]);
+		write(1, "': not a valid identifier\n", 26);
+		free(all->error);
+		all->error = ft_strdup("1");
+		return (0);
+	}
+	if ((i = ft_fin_check(cmd->arg)) != 0)
 	{
 		write(1, "minishell: unset: `", 19);
 		ft_putstr(cmd->arg[i]);
