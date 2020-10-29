@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/29 17:48:50 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 21:24:16 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,14 @@ int		ft_creat_env(t_data *all, char **env)
 	all->env[j] = NULL;
 	ft_parse_env(all);
 	return (0);
+}
+
+int		ft_utils_check(t_data *all, char *arg)
+{
+	write(1, "minishell: export: `", 20);
+	ft_putstr(arg);
+	write(1, "': not a valid identifier\n", 26);
+	free(all->error);
+	all->error = ft_strdup("1");
+	return (1);
 }
