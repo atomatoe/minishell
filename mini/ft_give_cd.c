@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 18:41:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/29 18:08:42 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 21:05:05 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void			ft_give_exportss(t_commands *cmd, t_data *all, int i)
 	while (len != count)
 	{
 		all->env[i] = NULL;
-		if (ft_str_check_exp(all->env, cmd->arg[len]) != 1)
+		if (ft_str_check_exp(all, all->env, cmd->arg[len]) != 1)
 		{
-			if (ft_str_check_exp(all->env, cmd->arg[len]) == 2)
+			if (ft_str_check_exp(all, all->env, cmd->arg[len]) == 2)
 			{
 				i--;
 				free(all->env[i]);

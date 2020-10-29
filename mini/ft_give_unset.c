@@ -6,18 +6,27 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/20 13:47:54 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/29 19:22:15 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 21:10:21 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int				ft_str_check_exp(char **env, char *arg)
+int				ft_str_check_exp(t_data *all, char **env, char *arg)
 {
 	int i;
 	int g;
 
 	i = 0;
+	if (ft_supercheck_arg(arg) == 1)
+	{
+			write(1, "minishell: export: `", 20);
+			ft_putstr(arg);
+			write(1, "': not a valid identifier\n", 26);
+			free(all->error);
+			all->error = ft_strdup("1");
+			return (1);
+	}
 	while (env[i])
 	{
 		g = 0;
@@ -123,27 +132,6 @@ static void		ft_give_unsets(t_commands *cmd, t_data *all)
 
 int				ft_give_unset(t_commands *cmd, t_data *all)
 {
-	int		i;
-
-	i = 0;
-	if ((i = ft_supercheck_arg(cmd->arg)) != 0)
-	{
-		write(1, "minishell: unset: `", 19);
-		ft_putstr(cmd->arg[i]);
-		write(1, "': not a valid identifier\n", 26);
-		free(all->error);
-		all->error = ft_strdup("1");
-		return (0);
-	}
-	if ((i = ft_fin_check(cmd->arg)) != 0)
-	{
-		write(1, "minishell: unset: `", 19);
-		ft_putstr(cmd->arg[i]);
-		write(1, "': not a valid identifier\n", 26);
-		free(all->error);
-		all->error = ft_strdup("1");
-		return (0);
-	}
 	ft_give_unsets(cmd, all);
 	return (0);
 }

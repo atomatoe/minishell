@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/29 19:14:08 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 21:04:52 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,15 +93,14 @@ char					**ft_str_replace(char **env, int i, int g);
 int						ft_strcmp(char *s1, char *s2);
 void					do_cmd(t_commands *cmd, t_data *all);
 void					ft_putstr(char *str);
-void					ft_error_uns_exp(t_commands *cmd);
 int						ft_str_check_uns(char *str, char **arg);
-int						ft_supercheck_arg(char **arg);
+int						ft_supercheck_arg(char *arg);
 void					ft_signal(int sig);
 void					ft_signal_quit(int sig);
 void					pipe_end(t_commands *pip, t_data *all,
 						int fd0, int fd1);
 int						redirects(t_commands *redir);
-int						ft_str_check_exp(char **env, char *arg);
+int						ft_str_check_exp(t_data *all, char **env, char *arg);
 size_t					find_end_cmd(char *s);
 void					record_mas_to_mas(char ***m1, char **m2, int start);
 int						if_basesim(char *line, int i, t_data *all, char **w);

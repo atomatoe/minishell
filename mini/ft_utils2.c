@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 17:54:39 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/29 19:03:56 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 21:01:55 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,29 +37,22 @@ void	ft_putstr(char *str)
 		write(1, &str[i++], 1);
 }
 
-int		ft_supercheck_arg(char **arg)
+int		ft_supercheck_arg(char *arg)
 {
 	int	i;
-	int g;
 
-	i = 1;
-	if (arg[i] == NULL)
+	i = 0;
+	if (arg == NULL)
 		return (0);
-	while (arg[i])
+	if (arg[0] == '=')
+		return(1);
+	while (arg[i] != '=' && arg[i] != '\0')
 	{
-		if (arg[i][0] != '_' && (ft_isalpha(arg[i][0]) != 1))
-			return (i);
-		g = 1;
-		while (arg[i][g] != '=' && arg[i][g] != '\0')
-		{
-			if (arg[i][g] != '_' && ft_isalpha(arg[i][g]) != 1
-				&& ft_isdigit(arg[i][g]) != 1)
-				return (i);
-			g++;
-		}
-		while (arg[i][g] != '\0')
-			if ((ft_supercheck_arg2(&g, arg, i) != -1))
-				return (i);
+		if (arg[0] != '_' && (ft_isalpha(arg[0]) != 1))
+			return (1);
+		if (arg[i] != '_' && ft_isalpha(arg[i]) != 1
+			&& ft_isdigit(arg[i]) != 1)
+			return (1);
 		i++;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 17:45:59 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/29 16:44:33 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 21:03:42 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,17 +101,6 @@ static void		ft_give_exports(t_commands *cmd, t_data *all)
 
 int				ft_give_export(t_commands *cmd, t_data *all)
 {
-	int		i;
-
-	if ((i = ft_supercheck_arg(cmd->arg)) != 0)
-	{
-		write(1, "minishell: export: `", 20);
-		ft_putstr(cmd->arg[i]);
-		write(1, "': not a valid identifier\n", 26);
-		free(all->error);
-		all->error = ft_strdup("1");
-		return (0);
-	}
 	if (cmd->arg[1] == NULL)
 	{
 		ft_sort_declare(all);
