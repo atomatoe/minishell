@@ -8,7 +8,7 @@ SRC = main.c parser/wait_str.c parser/create_lst.c parser/add_lst.c\
 	mini/ft_give_export.c mini/ft_give_unset.c mini/ft_give_pwd_env.c\
 	mini/ft_utils.c mini/ft_start.c mini/ft_give_command.c mini/ft_give_cd.c\
 	mini/ft_give_echo.c parser/utils.c mini/ft_utils2.c parser/split_words3.c\
-	mini/ft_exit.c
+	mini/ft_exit.c mini/ft_utils3.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 

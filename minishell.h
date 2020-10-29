@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/29 17:48:41 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/29 18:42:52 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,6 @@ void					ft_exit(t_commands *cmd, t_data *all, t_commands *pip);
 void					ft_malloc_error(void);
 void					ft_give_exportss(t_commands *cmd, t_data *all, int i);
 int						ft_find_equally(char *str, char *str2);
+int						ft_supercheck_arg2(int *g, char **arg, int i);
 
 #endif
