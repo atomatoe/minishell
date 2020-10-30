@@ -6,11 +6,23 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 18:41:07 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/29 21:05:05 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/30 13:43:52 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
+
+static void		ft_er_cd(t_data *all, char *tmp)
+{
+	if (chdir(tmp) == -1)
+	{
+		free(all->error);
+		all->error = ft_strdup("1");
+		ft_putstr("minishell: cd: ");
+		ft_putstr(tmp);
+		ft_putstr(": No such file or directory\n");
+	}
+}
 
 void			ft_give_exportss(t_commands *cmd, t_data *all, int i)
 {
@@ -88,6 +100,8 @@ int				ft_give_cd(t_commands *cmd, t_data *all)
 	getcwd(res, 1000);
 	if (cmd->arg[1])
 	{
+		if (cmd->arg[1][0] == '~')
+			ft_give_tilda(cmd, all);
 		if (chdir(cmd->arg[1]) == -1)
 		{
 			free(all->error);
@@ -99,8 +113,8 @@ int				ft_give_cd(t_commands *cmd, t_data *all)
 	}
 	else
 	{
-		tmp = ft_env_replace_home(cmd, all);
-		chdir(tmp);
+		if ((tmp = ft_env_replace_home(cmd, all)) != NULL)
+			ft_er_cd(all, tmp);
 		free(tmp);
 	}
 	ft_env_update(all, res);

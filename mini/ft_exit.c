@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/28 12:50:42 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/29 18:13:39 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/30 13:49:31 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,16 @@ void		ft_exit(t_commands *cmd, t_data *all, t_commands *pip)
 		}
 		exit(ft_atoi(all->error));
 	}
+}
+
+void		ft_give_tilda(t_commands *cmd, t_data *all)
+{
+	char *tmp;
+	char *tmp2;
+
+	tmp = ft_strdup(all->home_dir + 5);
+	tmp2 = ft_strjoin(tmp, cmd->arg[1] + 1);
+	free(tmp);
+	free(cmd->arg[1]);
+	cmd->arg[1] = tmp2;
 }

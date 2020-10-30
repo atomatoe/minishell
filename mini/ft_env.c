@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/21 16:26:30 by atomatoe          #+#    #+#             */
-/*   Updated: 2020/10/29 21:24:16 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/30 13:46:27 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	ft_init_struct(t_data *all)
 	all->fd0 = dup(0);
 	all->error = NULL;
 	all->error = ft_strdup("0");
+	all->home_dir = NULL;
 	all->arg = NULL;
 	all->env = NULL;
 	all->env_home_dir = 0;
@@ -85,6 +86,8 @@ int		ft_creat_env(t_data *all, char **env)
 	}
 	all->env[j] = NULL;
 	ft_parse_env(all);
+	if (all->env_home_dir != -1)
+		all->home_dir = ft_strdup(all->env[all->env_home_dir]);
 	return (0);
 }
 

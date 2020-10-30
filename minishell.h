@@ -6,7 +6,7 @@
 /*   By: atomatoe <atomatoe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/24 20:13:18 by skarry            #+#    #+#             */
-/*   Updated: 2020/10/29 21:23:19 by atomatoe         ###   ########.fr       */
+/*   Updated: 2020/10/30 13:34:40 by atomatoe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef	struct			s_data
 	char				*error;
 	char				**arg;
 	char				**env;
+	char				*home_dir;
 	int					env_home_dir;
 	int					env_dir_i;
 	int					env_old_dir_i;
@@ -66,7 +67,6 @@ void					free_cmd(t_commands *cmd);
 char					*get_word(char **line, int *er, t_data *all);
 void					write_data(t_commands *s_point, size_t *point,
 						char *line, t_data *all);
-void					print_lst(t_commands *cmd);
 void					record_redir(t_commands *cmd, t_data *all);
 int						ft_creat_env(t_data *all, char **env);
 void					ft_parse_env(t_data *all);
@@ -111,5 +111,6 @@ void					ft_give_exportss(t_commands *cmd, t_data *all, int i);
 int						ft_find_equally(char *str, char *str2);
 int						ft_fin_check(char **arg);
 int						ft_utils_check(t_data *all, char *arg);
+void					ft_give_tilda(t_commands *cmd, t_data *all);
 
 #endif
