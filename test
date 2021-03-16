@@ -1,9 +1,0 @@
-Makefile
-libft
-main.c
-main.o
-mini
-minishell
-minishell.h
-parser
-test
